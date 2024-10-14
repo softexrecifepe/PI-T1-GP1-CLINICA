@@ -1,10 +1,11 @@
-/* import mysql from 'mysql2';
+/* const mysql = require ('mysql2');
 
-
-export const db = mysql.createConnection({
+const db = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
     password: 'admin',
     database: 'mascot_clinical'
-}); */
+});
+
+module.exports = { db } */

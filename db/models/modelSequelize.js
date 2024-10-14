@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize(/*configurações do seu banco de dados*/);
+const { sequelize } = require('../../connection/connectionSequelize');
+const { DataTypes } = require("sequelize")
 
 // Modelo para a tabela `personRegister`
 const PersonRegister = sequelize.define('PersonRegister', {
@@ -324,4 +324,15 @@ Treatment.hasMany(PatientsDailyChart, { foreignKey: 'treatmentId' });
 PatientsDailyChart.belongsTo(Role, { foreignKey: 'roleId' });
 Patient.belongsTo(Cage, { foreignKey: 'patientId' });
 
-
+module.exports = {
+  PersonRegister,
+  Address,
+  Contact,
+  Role,
+  Pet,
+  Patient,
+  Cage,
+  Treatment,
+  Medication,
+  PatientsDailyChart
+}
