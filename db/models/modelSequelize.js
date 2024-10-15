@@ -325,6 +325,7 @@ PatientsDailyChart.belongsTo(Role, { foreignKey: 'roleId' });
 Patient.belongsTo(Cage, { foreignKey: 'patientId' });
 
 module.exports = {
+  sequelize,
   PersonRegister,
   Address,
   Contact,
