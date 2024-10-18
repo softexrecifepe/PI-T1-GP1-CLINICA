@@ -14,13 +14,17 @@ Para instalar e configurar o projeto localmente, siga os seguintes passos:
    npm install
 
 3. **Configure o banco de dados MySQL:**
-   Certifique-se de que o MySQL esteja instalado e rodando em sua máquina. Crie um banco de dados chamado `mascot_clinical`. 
+   Certifique-se de que o MySQL esteja instalado e rodando em sua máquina. Crie um banco de dados chamado `mascot_clinical`.
 
-4. **Inicie o servidor:**
+4. **Configuração do Sequelize:**
+   O projeto usa o **Sequelize** como ORM para gerenciar o banco de dados. No arquivo `config/config.json`, configure as credenciais do MySQL (usuário, senha e host). Em seguida, execute as migrações para criar as tabelas no banco de dados:
+   npx sequelize db:migrate
+
+5. **Inicie o servidor:**
    Execute o seguinte comando para rodar o servidor:
-   npm start
+   npm run dev
 
-5. **Verifique a aplicação:**
+6. **Verifique a aplicação:**
    Acesse `http://localhost:3000` no seu navegador. Você deverá ver a mensagem "Hello World!".
 
 ## Estrutura do Banco de Dados
@@ -42,9 +46,9 @@ O sistema possui várias tabelas inter-relacionadas, tais como:
 
 Depois de seguir as etapas de instalação e configuração, você poderá rodar o servidor com:
 
-npm start
+npm run dev
 
-O servidor será iniciado e estará disponível em `http://localhost:3000`.
+O servidor será iniciado e estará disponível em `http://localhost:port`.
 
 ## Contribuindo
 
