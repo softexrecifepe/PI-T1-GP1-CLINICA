@@ -7,7 +7,7 @@ Este é um sistema de gerenciamento clínico de mascotes desenvolvido usando **N
 Para instalar e configurar o projeto localmente, siga os seguintes passos:
 
 1. **Clone o repositório:**
-   git clone https://github.com/SeuUsuario/NomeDoRepositorio.git
+   git clone https://github.com/softexrecifepe/PI-T1-GP1-CLINICA.git
 
 2. **Instale as dependências do projeto:**
    Navegue até o diretório raiz do projeto e execute o comando:
