@@ -1,73 +1,51 @@
-# Protótipo de Sistema de internação para clínica veterinária
+# Mascot Clinical Management System
 
-Este projeto é uma aplicação Node.js para gerenciar informações sobre pets em uma clínica veterinária. Ele fornece operações de CRUD (Criar, Ler, Atualizar e Deletar) para gerenciar registros de pets, tutores e pacientes.
+Este é um sistema de gerenciamento clínico de mascotes desenvolvido usando **Node.js**, **Express**, **Sequelize** e **MySQL**. O sistema tem como objetivo gerenciar dados relacionados a pacientes, tratamentos, animais de estimação, funcionários (tutores, veterinários e enfermeiros) e a ficha diária de tratamento.
 
-## Tecnologias Usadas
+## Instalação e Configuração
 
-- **Node.js**: Ambiente de execução JavaScript.
-- **Express**: Framework para Node.js que facilita a criação de APIs.
-- **MySQL**: Sistema de gerenciamento de banco de dados usado para armazenar as informações.
+Para instalar e configurar o projeto localmente, siga os seguintes passos:
 
-## Pré-requisitos
+1. **Clone o repositório:**
+   git clone https://github.com/SeuUsuario/NomeDoRepositorio.git
 
-- Ter o [Node.js](https://nodejs.org/) instalado na sua máquina.
-- Ter o [MySQL](https://www.mysql.com/) instalado e em execução.
-- Ter o NPM (Node Package Manager) instalado, que geralmente vem com o Node.js.
-
-## Instalação
-
-1. Clone o repositório:
-
-   ```bash
-   git clone https://github.com/JonTalmon/nome-do-repositorio.git
-   ```
-
-2. Navegue até o diretório do projeto:
-
-   ```bash
-   cd nome-do-repositorio
-   ```
-
-3. Instale as dependências:
-
-   ```bash
+2. **Instale as dependências do projeto:**
+   Navegue até o diretório raiz do projeto e execute o comando:
    npm install
-   ```
 
-4. Configure a conexão com o banco de dados no arquivo `connection.js`.
+3. **Configure o banco de dados MySQL:**
+   Certifique-se de que o MySQL esteja instalado e rodando em sua máquina. Crie um banco de dados chamado `mascot_clinical`. 
 
-## Uso
+4. **Inicie o servidor:**
+   Execute o seguinte comando para rodar o servidor:
+   npm start
 
-1. Inicie o servidor:
+5. **Verifique a aplicação:**
+   Acesse `http://localhost:3000` no seu navegador. Você deverá ver a mensagem "Hello World!".
 
-   ```bash
-   node index.js
-   ```
+## Estrutura do Banco de Dados
 
-2. Acesse a aplicação em seu navegador ou via ferramenta de testes de API (como Postman) em `http://localhost:3000`.
+O sistema possui várias tabelas inter-relacionadas, tais como:
 
-## Endpoints
+- **personRegister**: Registra pessoas, como tutores, veterinários e enfermeiros.
+- **address**: Guarda endereços associados a pessoas.
+- **contact**: Guarda informações de contato das pessoas.
+- **role**: Define o papel de uma pessoa (Tutor, Veterinário, Enfermeiro).
+- **pet**: Registra animais de estimação.
+- **patient**: Registra pacientes admitidos na clínica.
+- **cage**: Define as gaiolas onde os pacientes estão.
+- **treatment**: Registra tratamentos dados aos pacientes.
+- **medication**: Guarda informações sobre medicações administradas.
+- **patientsDailyChart**: Ficha diária de acompanhamento dos pacientes.
 
-### GET `/pet`
+## Rodando o Servidor
 
-Retorna todos os pets cadastrados.
+Depois de seguir as etapas de instalação e configuração, você poderá rodar o servidor com:
 
-### GET `/pet/:name`
+npm start
 
-Retorna informações sobre um pet específico pelo nome.
+O servidor será iniciado e estará disponível em `http://localhost:3000`.
 
-### DELETE `/pet/:name`
+## Contribuindo
 
-Deleta um pet específico pelo nome. **Observação**: Esse endpoint não pode deletar pets que estão referenciados por outras tabelas.
-
-## Contribuição
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um problema ou enviar um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
-
-## Contato
-
-Para mais informações, entre em contato com [JonTalmon](https://github.com/JonTalmon).
+Se quiser contribuir para este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request no GitHub.
