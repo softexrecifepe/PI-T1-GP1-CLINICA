@@ -324,6 +324,7 @@ Treatment.hasMany(PatientsDailyChart, { foreignKey: 'treatmentId' });
 PatientsDailyChart.belongsTo(Role, { foreignKey: 'roleId' });
 Patient.belongsTo(Cage, { foreignKey: 'patientId' });
 
+// exporta modelos e conexão para ser sincronizada com o banco e para criar as tabelas
 module.exports = {
   sequelize,
   PersonRegister,

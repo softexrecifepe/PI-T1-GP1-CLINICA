@@ -1,6 +1,6 @@
 const express = require('express');
 require("dotenv").config();
-const { sequelize, PersonRegister, Address, Contact, Role, Pet, Patient, Cage, Treatment, Medication, PatientsDailyChart } = require('./db/models/modelSequelize');
+const { sequelize } = require('./db/models/modelSequelize');
 const app = express();
 const port = process.env.server_port;
 
@@ -8,6 +8,10 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
+});
+
+app.get("cadastro", (req,res) => {
+    
 });
 
 // Sincronizar os modelos com o banco de dados
@@ -21,7 +25,7 @@ sequelize.sync({ force: true })
 
 
 app.listen(port, async () => {
-    console.log(`Server is running`);
+    console.log(`Server running`);
     try {
         await sequelize.authenticate();
         console.log('Conectado ao banco de dados!');
