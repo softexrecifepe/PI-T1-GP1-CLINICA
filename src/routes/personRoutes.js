@@ -1,26 +1,16 @@
-import express from 'express'
-import { 
-    readAllPersons,
-    readPersonById,
-    readPersonByName,
-    readPersonsByRole,
-    readPersonByPostalCode,
-    readPersonByPhoneNumber,
-    createPerson,
-    deletePersonById,
-    updatePersonById
-} from '../controllers/personControllers.js';
+const express = require('express');
+const personControllers = require("../controllers/personControllers/personExports");
 
 const router = express.Router();
 
-router.get('/', readAllPersons);
-router.get('/id/:id', readPersonById);
-router.get('/name/:name', readPersonByName);
-router.get('/role/:role', readPersonsByRole);
-router.get('/postalcode/:searchedPostalCode', readPersonByPostalCode);
-router.get('/phone/:cellPhone', readPersonByPhoneNumber);
-router.post('/', createPerson);
-router.delete('/id/:id', deletePersonById);
-router.put('/id/:id', updatePersonById);
+router.get('/', personControllers.readAllPersons);
+router.get('/id/:id', personControllers.readPersonById);
+router.get('/name/:name', personControllers.readPersonByName);
+router.get('/role/:role', personControllers.readPersonsByRole);
+router.get('/postalcode/:searchedPostalCode', personControllers.readPersonByPostalCode);
+router.get('/phone/:cellPhone', personControllers.readPersonByPhoneNumber);
+router.post('/', personControllers.createPerson);
+router.delete('/id/:id', personControllers.deletePerson);
+router.put('/id/:id', personControllers.updatePerson);
 
-export default router
+module.exports = router;

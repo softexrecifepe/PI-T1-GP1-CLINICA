@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../db/connection.js"
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db/connection.js");
 
 const PersonRegister = sequelize.define('PersonRegister', {
     id: {
@@ -21,4 +21,4 @@ const PersonRegister = sequelize.define('PersonRegister', {
     timestamps: false,
 });
 
-export default PersonRegister
+module.exports = PersonRegister;

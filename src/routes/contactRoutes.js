@@ -1,22 +1,14 @@
-import express from 'express';
-import {
-    readAllContacts,
-    readContactById,
-    readContactByPhoneNumber,
-    readContactByEmail,
-    createContact,
-    deleteContactById,
-    updateContactById,
-} from '../controllers/contactControllers.js';
+const express = require('express');
+const contactControllers = require("../controllers/contactControllers/contactExports");
 
 const router = express.Router();
 
-router.get('/', readAllContacts);
-router.get('/id/:id', readContactById);
-router.get('/phone/:phoneNumber', readContactByPhoneNumber);
-router.get('/email/:email', readContactByEmail);
-router.post('/', createContact);
-router.delete('/id/:id', deleteContactById);
-router.put('/id/:id', updateContactById);
+router.get('/', contactControllers.readAllContacts);
+router.get('/id/:id', contactControllers.readContactById);
+router.get('/phone/:phoneNumber', contactControllers.readContactByPhoneNumber);
+router.get('/email/:email', contactControllers.readContactByEmail);
+router.post('/', contactControllers.createContact);
+router.delete('/id/:id', contactControllers.deleteContact);
+router.put('/id/:id', contactControllers.updateContact);
 
-export default router;
+module.exports = router;

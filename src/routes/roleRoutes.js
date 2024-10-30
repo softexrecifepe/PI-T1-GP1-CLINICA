@@ -1,20 +1,13 @@
-import express from 'express';
-import {
-    readAllRoles,
-    readRoleById,
-    readRoleByRoleType,
-    createRole,
-    deleteRoleById,
-    updateRoleById,
-} from '../controllers/roleControllers.js';
+const express = require('express');
+const roleControllers = require("../controllers/roleControllers/roleExports");
 
 const router = express.Router();
 
-router.get('/', readAllRoles);
-router.get('/id/:id', readRoleById);
-router.get('/type/:roleType', readRoleByRoleType);
-router.post('/', createRole);
-router.delete('/id/:id', deleteRoleById);
-router.put('/id/:id', updateRoleById);
+router.get('/', roleControllers.readAllRoles);
+router.get('/id/:id', roleControllers.readRoleById);
+router.get('/type/:roleType', roleControllers.readRoleByRoleType);
+router.post('/', roleControllers.createRole);
+router.delete('/id/:id', roleControllers.deleteRole);
+router.put('/id/:id', roleControllers.updateRole);
 
-export default router;
+module.exports = router;

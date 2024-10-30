@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../db/connection.js";
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db/connection.js");
 
 const Contact = sequelize.define("Contact", {
     id: {
@@ -24,4 +24,4 @@ const Contact = sequelize.define("Contact", {
     timestamps: false,
 });
 
-export default Contact
+module.exports = Contact;

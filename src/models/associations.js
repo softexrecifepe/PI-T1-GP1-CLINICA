@@ -1,7 +1,7 @@
-import PersonRegister from './personRegister.js';
-import Address from "./adress.js";
-import Contact from './contact.js';
-import Role from './role.js';
+const PersonRegister = require('./personRegister.js');
+const Address = require('./address.js');
+const Contact = require('./contact.js');
+const Role = require('./role.js');
 
 const defineAssociations = () => {
     PersonRegister.hasMany(Address, {
@@ -34,4 +34,4 @@ const defineAssociations = () => {
 };
 defineAssociations();
 
-export default defineAssociations;
+module.exports = defineAssociations;

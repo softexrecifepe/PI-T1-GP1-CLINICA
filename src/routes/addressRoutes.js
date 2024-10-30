@@ -1,22 +1,14 @@
-import express from 'express';
-import {
-    readAddressById,
-    readAddressByAddressStreet,
-    readAddressByCity,
-    readAddressByPostalCode,
-    createAddress,
-    deleteAddressById,
-    updateAddressById,
-} from '../controllers/addressControllers.js';
+const express = require('express');
+const addressControllers = require("../controllers/addressControllers/addressExports");
 
 const router = express.Router();
 
-router.get('/id/:id', readAddressById);
-router.get('/street/:addressStreet', readAddressByAddressStreet);
-router.get('/city/:city', readAddressByCity);
-router.get('/postalcode/:postalCode', readAddressByPostalCode);
-router.post('/', createAddress);
-router.delete('/id/:id', deleteAddressById);
-router.put('/id/:id', updateAddressById);
+router.get('/id/:id', addressControllers.readAddressById);
+router.get('/street/:addressStreet', addressControllers.readAddressByAddressStreet);
+router.get('/city/:city', addressControllers.readAddressByCity);
+router.get('/postalcode/:postalCode', addressControllers.readAddressByPostalCode);
+router.post('/', addressControllers.createAddress);
+router.delete('/id/:id', addressControllers.deleteAddress);
+router.put('/id/:id', addressControllers.updateAddress);
 
-export default router;
+module.exports = router;

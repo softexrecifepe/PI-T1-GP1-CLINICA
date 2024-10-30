@@ -1,10 +1,10 @@
-import express from 'express'
-import sequelize from "./src/db/connection.js"
-import dotenv from "dotenv";
-import personRoutes from "./src/routes/personRoutes.js"
-import addressRoutes from "./src/routes/addressRoutes.js"
-import contactRoutes from "./src/routes/contactRoutes.js"
-import roleRoutes from "./src/routes/roleRoutes.js"
+const express = require('express');
+const sequelize = require("./src/db/connection.js");
+const dotenv = require("dotenv");
+const personRoutes = require("./src/routes/personRoutes.js");
+const addressRoutes = require("./src/routes/addressRoutes.js");
+const contactRoutes = require("./src/routes/contactRoutes.js");
+const roleRoutes = require("./src/routes/roleRoutes.js");
 
 dotenv.config();
 
@@ -18,9 +18,8 @@ app.use("/address", addressRoutes);
 app.use("/contact", contactRoutes);
 app.use("/role", roleRoutes);
 
-
 sequelize.sync().then(() => {
-    console.log("Connected to the database and tables syncronized");
+    console.log("Connected to the database and tables synchronized");
     app.listen(port, () => {
         console.log(`Server is running on port: ${port}`);
     });

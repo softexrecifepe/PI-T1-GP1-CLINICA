@@ -1,7 +1,7 @@
-import PersonRegister from "../models/personRegister.js"
-import Role from "../models/role.js"
-import Address from "../models/adress.js"
-import "../models/associations.js";
+const PersonRegister = require("../../models/personRegister.js");
+const Role = require("../../models/role.js");
+const Address = require("../models/address.js");
+require("../../models/associations.js");
 
 async function readAllPersons(req, res) {
     try {
@@ -100,88 +100,11 @@ async function readPersonByPhoneNumber(req, res) {
     };
 };
 
-async function createPerson(req, res) {
-    try {
-        const { name, cpf, address, contact, role } = req.body;
-        const newPerson = await PersonRegister.create({name, cpf});
-        if (address) {
-            await Address.create({
-                ...address,
-                personRegisterid: newPerson.id,
-            });
-        }
-        if (contact) {
-            await Contact.create({
-                ...contact,
-                personRegisterid: newPerson.id,
-            });
-        }
-        if (role) {
-            await Role.create({
-                ...role,
-                personRegisterid: newPerson.id,
-            });
-        }
-        res.status(201).json({ message: "New person created successfully", newPerson});
-    } catch (err) {
-        res.status(500).json({ Error: "Error creating person", details: err.message});
-    };
-};
-
-async function deletePersonById(req, res) {
-    try {
-        const { id } = req.params;
-        const person = await PersonRegister.findByPk(id);
-        if (person) {
-            await PersonRegister.destroy({
-                where: { id }
-            });
-            res.status(204).json({ message: "Person deleted successfully"});
-        } else {
-            res.status(404).json({ Error: "Person not found" });
-        }
-    } catch (err) {
-        res.status(500).json({ Error: "Error deleting person", details: err.message });
-    };
-};
-
-async function updatePersonById(req, res) {
-    try {
-        const { id } = req.params; 
-        const { name, cpf, address, contact, role } = req.body;
-        const person = await PersonRegister.findByPk(id);
-        
-        if (!person) {
-            return res.status(404).json({ Error: "Person not found" });
-        }
-
-        await person.update({ name, cpf });
-
-        if (address) {
-            await person.createAddress(address);
-        }
-
-        if (contact) {
-            await person.createContact(contact);
-        }
-
-        if (role) {
-            await person.createRole(role);
-        };
-        res.status(200).json(person);
-    } catch (err) {
-        res.status(500).json({ Error: "Error updating person", details: err.message });
-    };
-};
-
-export {
+module.exports = {
     readAllPersons,
     readPersonById,
     readPersonByName,
-    readPersonsByRole,
-    readPersonByPostalCode,
     readPersonByPhoneNumber,
-    createPerson,
-    deletePersonById,
-    updatePersonById,
+    readPersonByPostalCode,
+    readPersonsByRole
 }

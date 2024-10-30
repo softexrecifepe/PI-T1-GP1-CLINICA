@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../db/connection.js";
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db/connection.js");
 
 const Address = sequelize.define("Address", {
     id: {
@@ -24,7 +24,7 @@ const Address = sequelize.define("Address", {
         allowNull: false,
     },
     personregisterid: {
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     }
 }, {
@@ -32,4 +32,4 @@ const Address = sequelize.define("Address", {
     timestamps: false,
 });
 
-export default Address
+module.exports = Address;
