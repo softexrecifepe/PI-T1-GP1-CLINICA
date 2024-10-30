@@ -21,7 +21,7 @@ Este é um sistema de gestão para clínicas veterinárias que permite registrar
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/JonTalmon/ProjetoVeterinaria.git
+   git clone https://github.com/softexrecifepe/PI-T1-GP1-CLINICA.git
 
 2. Instale as dependências:
    ```bash
