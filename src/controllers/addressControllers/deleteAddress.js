@@ -1,4 +1,4 @@
-const Address = require("../../models/address.js");
+const {Address} = require("../../models/address.js");
 require("../../models/associations.js");
 
 async function deleteAddressById(req, res) {

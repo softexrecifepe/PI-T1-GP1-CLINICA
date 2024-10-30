@@ -1,4 +1,4 @@
-const Role = require("../../models/role.js");
+const {Role} = require("../../models/role.js");
 require("../../models/associations.js");
 
 async function readAllRoles(req, res) {

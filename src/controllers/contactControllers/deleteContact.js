@@ -1,4 +1,4 @@
-const Contact = require("../../models/contact.js");
+const {Contact} = require("../../models/contact.js");
 require("../../models/associations.js");
 
 async function deleteContactById(req, res) {

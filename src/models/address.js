@@ -32,4 +32,4 @@ const Address = sequelize.define("Address", {
     timestamps: false,
 });
 
-module.exports = Address;
+module.exports = { Address };

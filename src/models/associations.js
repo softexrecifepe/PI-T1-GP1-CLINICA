@@ -1,7 +1,7 @@
-const PersonRegister = require('./personRegister.js');
-const Address = require('./address.js');
-const Contact = require('./contact.js');
-const Role = require('./role.js');
+const {PersonRegister} = require('./personRegister.js');
+const {Address} = require('./address.js');
+const {Contact} = require('./contact.js');
+const {Role} = require('./role.js');
 
 const defineAssociations = () => {
     PersonRegister.hasMany(Address, {

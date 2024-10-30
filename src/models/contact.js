@@ -24,4 +24,4 @@ const Contact = sequelize.define("Contact", {
     timestamps: false,
 });
 
-module.exports = Contact;
+module.exports = {Contact};

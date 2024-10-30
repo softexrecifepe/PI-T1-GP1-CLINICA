@@ -1,5 +1,5 @@
-const PersonRegister = require("../../models/personRegister.js");
-import "../../models/associations.js";
+const {PersonRegister} = require("../../models/personRegister.js");
+require("../../models/associations.js");
 
 async function updatePersonById(req, res) {
     try {

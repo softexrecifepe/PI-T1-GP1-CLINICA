@@ -1,6 +1,6 @@
-const PersonRegister = require("../../models/personRegister.js");
-const Role = require("../../models/role.js");
-const Address = require("../models/address.js");
+const {PersonRegister} = require("../../models/personRegister.js");
+const {Role} = require("../../models/role.js");
+const { Address } = require("../../models/address.js");
 require("../../models/associations.js");
 
 async function readAllPersons(req, res) {

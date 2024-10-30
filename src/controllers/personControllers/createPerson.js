@@ -1,7 +1,8 @@
-const PersonRegister = require("../../models/personRegister.js");
-const Role = require("../../models/role.js");
-const Address = require("../models/address.js");
-import "../../models/associations.js";
+const { PersonRegister } = require("../../models/personRegister.js");
+const { Role } = require("../../models/role.js");
+const { Address } = require("../../models/address.js");
+const { Contact } = require("../../models/contact.js");
+require("../../models/associations.js");
 
 async function createPerson(req, res) {
     try {

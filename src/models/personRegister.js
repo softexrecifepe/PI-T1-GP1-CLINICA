@@ -21,4 +21,4 @@ const PersonRegister = sequelize.define('PersonRegister', {
     timestamps: false,
 });
 
-module.exports = PersonRegister;
+module.exports = {PersonRegister};
