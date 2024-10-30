@@ -1,35 +1,29 @@
-const express = require('express');
-require("dotenv").config();
-const { sequelize } = require('./db/models/modelSequelize');
+import express from 'express'
+import sequelize from "./src/db/connection.js"
+import dotenv from "dotenv";
+import personRoutes from "./src/routes/personRoutes.js"
+import addressRoutes from "./src/routes/addressRoutes.js"
+import contactRoutes from "./src/routes/contactRoutes.js"
+import roleRoutes from "./src/routes/roleRoutes.js"
+
+dotenv.config();
+
+const port = process.env.PORT || 3000;
 const app = express();
-const port = process.env.server_port;
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+app.use("/person", personRoutes);
+app.use("/address", addressRoutes);
+app.use("/contact", contactRoutes);
+app.use("/role", roleRoutes);
 
-app.get("cadastro", (req,res) => {
-    
-});
 
-// Sincronizar os modelos com o banco de dados
-sequelize.sync({ force: true })
-    .then(() => {
-        console.log('As tabelas foram criadas com sucesso.');
-    })
-    .catch((erro) => {
-        console.log("Falha ao conectar no banco de dados: " + erro);
+sequelize.sync().then(() => {
+    console.log("Connected to the database and tables syncronized");
+    app.listen(port, () => {
+        console.log(`Server is running on port: ${port}`);
     });
-
-
-app.listen(port, async () => {
-    console.log(`Server running`);
-    try {
-        await sequelize.authenticate();
-        console.log('Conectado ao banco de dados!');
-    } catch (error) {
-        console.error('Erro ao conectar com o banco de dados:', error);
-    }
+}).catch((error) => {
+    console.error("Error connecting to the database:", error);
 });

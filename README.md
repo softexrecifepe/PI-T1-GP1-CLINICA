@@ -1,55 +1,74 @@
-# Mascot Clinical Management System
+# Sistema de Gestão de Animais de Estimação
 
-Este é um sistema de gerenciamento clínico de mascotes desenvolvido usando **Node.js**, **Express**, **Sequelize** e **MySQL**. O sistema tem como objetivo gerenciar dados relacionados a pacientes, tratamentos, animais de estimação, funcionários (tutores, veterinários e enfermeiros) e a ficha diária de tratamento.
+Este é um sistema de gestão para clínicas veterinárias que permite registrar, gerenciar e consultar informações sobre pessoas, endereços, contatos e papéis (roles) de forma eficiente.
 
-## Instalação e Configuração
+## Tecnologias Utilizadas
 
-Para instalar e configurar o projeto localmente, siga os seguintes passos:
+- **Node.js**
+- **Express.js**
+- **Sequelize**
+- **POSTGRESQL** 
+- **RENDER**
 
-1. **Clone o repositório:**
-   git clone https://github.com/softexrecifepe/PI-T1-GP1-CLINICA.git
+## Estrutura do Projeto
 
-2. **Instale as dependências do projeto:**
-   Navegue até o diretório raiz do projeto e execute o comando:
+- **controllers/**: Contém a lógica para manipulação de dados.
+- **models/**: Contém os modelos de dados (PersonRegister, Address, Contact, Role).
+- **routes/**: Define as rotas da API.
+- **db/**: Configuração do banco de dados.
+
+## Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/JonTalmon/ProjetoVeterinaria.git
+
+2. Instale as dependências:
+   ```bash
    npm install
 
-3. **Configure o banco de dados MySQL:**
-   Certifique-se de que o MySQL esteja instalado e rodando em sua máquina. Crie um banco de dados chamado `mascot_clinical`.
+3. Configure o banco de dados em db/connection.js e crie as tabelas necessárias.
 
-4. **Configuração do Sequelize:**
-   O projeto usa o **Sequelize** como ORM para gerenciar o banco de dados. No arquivo `config/config.json`, configure as credenciais do MySQL (usuário, senha e host). Em seguida, execute as migrações para criar as tabelas no banco de dados:
-   npx sequelize db:migrate
+4. Execute a aplicação:
+   ```bash
+   node index.js
 
-5. **Inicie o servidor:**
-   Execute o seguinte comando para rodar o servidor:
-   npm run dev
+## Rotas da API
 
-6. **Verifique a aplicação:**
-   Acesse `http://localhost:3000` no seu navegador. Você deverá ver a mensagem "Hello World!".
+### **Person Register**
+- `GET /persons`: Recupera todas as pessoas.
+- `GET /persons/id/:id`: Recupera uma pessoa pelo ID.
+- `GET /persons/name/:name`: Recupera uma pessoa pelo nome.
+- `GET /persons/role/:role`: Recupera pessoas pelo tipo de papel.
+- `GET /persons/postalcode/:searchedPostalCode`: Recupera pessoas pelo código postal.
+- `GET /persons/cellphone/:cellPhone`: Recupera pessoas pelo número de celular.
+- `POST /persons`: Cria uma nova pessoa.
+- `DELETE /persons/id/:id`: Deleta uma pessoa pelo ID.
+- `DELETE /persons/name/:name`: Deleta uma pessoa pelo nome.
+- `PUT /persons/id/:id`: Atualiza uma pessoa pelo ID.
 
-## Estrutura do Banco de Dados
+### **Address**
+- `GET /addresses/id/:id`: Recupera um endereço pelo ID.
+- `GET /addresses/street/:addressStreet`: Recupera endereços pelo nome da rua.
+- `GET /addresses/city/:city`: Recupera endereços pela cidade.
+- `GET /addresses/postalcode/:postalCode`: Recupera endereços pelo código postal.
+- `POST /addresses`: Cria um novo endereço.
+- `DELETE /addresses/id/:id`: Deleta um endereço pelo ID.
+- `PUT /addresses/id/:id`: Atualiza um endereço pelo ID.
 
-O sistema possui várias tabelas inter-relacionadas, tais como:
+### **Contact**
+- `GET /contacts`: Recupera todos os contatos.
+- `GET /contacts/id/:id`: Recupera um contato pelo ID.
+- `GET /contacts/phone/:phoneNumber`: Recupera um contato pelo número de telefone.
+- `GET /contacts/email/:email`: Recupera um contato pelo email.
+- `POST /contacts`: Cria um novo contato.
+- `DELETE /contacts/id/:id`: Deleta um contato pelo ID.
+- `PUT /contacts/id/:id`: Atualiza um contato pelo ID.
 
-- **personRegister**: Registra pessoas, como tutores, veterinários e enfermeiros.
-- **address**: Guarda endereços associados a pessoas.
-- **contact**: Guarda informações de contato das pessoas.
-- **role**: Define o papel de uma pessoa (Tutor, Veterinário, Enfermeiro).
-- **pet**: Registra animais de estimação.
-- **patient**: Registra pacientes admitidos na clínica.
-- **cage**: Define as gaiolas onde os pacientes estão.
-- **treatment**: Registra tratamentos dados aos pacientes.
-- **medication**: Guarda informações sobre medicações administradas.
-- **patientsDailyChart**: Ficha diária de acompanhamento dos pacientes.
-
-## Rodando o Servidor
-
-Depois de seguir as etapas de instalação e configuração, você poderá rodar o servidor com:
-
-npm run dev
-
-O servidor será iniciado e estará disponível em `http://localhost:port`.
-
-## Contribuindo
-
-Se quiser contribuir para este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request no GitHub.
+### **Role**
+- `GET /roles`: Recupera todos os papéis.
+- `GET /roles/id/:id`: Recupera um papel pelo ID.
+- `GET /roles/roleType/:roleType`: Recupera papéis pelo tipo.
+- `POST /roles`: Cria um novo papel.
+- `DELETE /roles/id/:id`: Deleta um papel pelo ID.
+- `PUT /roles/id/:id`: Atualiza um papel pelo ID.
