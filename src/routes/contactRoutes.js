@@ -8,7 +8,7 @@ router.get('/id/:id', contactControllers.readContactById);
 router.get('/phone/:phoneNumber', contactControllers.readContactByPhoneNumber);
 router.get('/email/:email', contactControllers.readContactByEmail);
 router.post('/', contactControllers.createContact);
-router.delete('/id/:id', contactControllers.deleteContact);
-router.put('/id/:id', contactControllers.updateContact);
+router.delete('/id/:id', contactControllers.deleteContactById);
+router.put('/id/:id', contactControllers.updateContactById);
 
 module.exports = router;

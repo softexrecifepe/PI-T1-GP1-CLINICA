@@ -10,7 +10,7 @@ router.get('/role/:role', personControllers.readPersonsByRole);
 router.get('/postalcode/:searchedPostalCode', personControllers.readPersonByPostalCode);
 router.get('/phone/:cellPhone', personControllers.readPersonByPhoneNumber);
 router.post('/', personControllers.createPerson);
-router.delete('/id/:id', personControllers.deletePerson);
-router.put('/id/:id', personControllers.updatePerson);
+router.delete('/id/:id', personControllers.deletePersonById);
+router.put('/id/:id', personControllers.updatePersonById);
 
 module.exports = router;

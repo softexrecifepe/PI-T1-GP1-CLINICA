@@ -1,7 +1,7 @@
 const { createAddress } = require("./createAddress");
 const { readAddressById, readAddressByAddressStreet, readAddressByCity, readAddressByPostalCode } = require("./getAddress");
-const { updateAddress } = require("./updateAddress");
-const { deleteAddress } = require("./deleteAddress");
+const { updateAddressById } = require("./updateAddress");
+const { deleteAddressById } = require("./deleteAddress");
 
 module.exports = {
     createAddress,
@@ -9,6 +9,6 @@ module.exports = {
     readAddressByAddressStreet,
     readAddressByCity,
     readAddressByPostalCode,
-    updateAddress,
-    deleteAddress
+    updateAddressById,
+    deleteAddressById
 }

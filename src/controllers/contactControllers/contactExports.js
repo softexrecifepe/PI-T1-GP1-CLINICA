@@ -1,7 +1,7 @@
 const { createContact } = require("./createContact");
 const { readAllContacts, readContactById, readContactByEmail, readContactByPhoneNumber } = require("./getContact");
-const { updateContact } = require("./updateContact");
-const { deleteContact } = require("./updateContact");
+const { updateContactById } = require("./updateContact");
+const { deleteContactById } = require("./deleteContact");
 
 module.exports = {
     createContact,
@@ -9,6 +9,6 @@ module.exports = {
     readContactById,
     readContactByEmail,
     readContactByPhoneNumber,
-    updateContact,
-    deleteContact
+    updateContactById,
+    deleteContactById
 }
