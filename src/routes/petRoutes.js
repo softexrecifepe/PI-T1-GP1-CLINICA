@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const controllers = require("../controllers/petControllers/petExports")
+const controllers = require("../controllers/petControllers/petExports");
 
 
 // Rota para ver todos os pets

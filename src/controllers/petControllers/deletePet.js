@@ -1,4 +1,4 @@
-const { PersonRegister, Address, Contact, Role, Pet, Patient, Cage, Treatment, Medication, PatientsDailyChart } = require("../../models/modelSequelize")
+const { Pet } = require("../../models/pet");
 
   async function deletePet (req, res){
     try {

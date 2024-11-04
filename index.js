@@ -18,7 +18,7 @@ app.use("/person", personRoutes);
 app.use("/address", addressRoutes);
 app.use("/contact", contactRoutes);
 app.use("/role", roleRoutes);
-app.use("./pet", petRoutes);
+app.use("/pet", petRoutes);
 
 sequelize.sync().then(() => {
     console.log("Connected to the database and tables synchronized");

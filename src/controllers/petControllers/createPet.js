@@ -1,4 +1,4 @@
-const { PersonRegister, Address, Contact, Role, Pet, Patient, Cage, Treatment, Medication, PatientsDailyChart } = require("../../db/models/modelSequelize")
+const { Pet } = require("../../models/pet");
 
 async function createPet (req, res){
     const { name, species, breed, color, weight, sex, age, photo, behavior, neurologicalDisorders, notes } = req.body;
