@@ -16,9 +16,6 @@ const PersonRegister = sequelize.define('PersonRegister', {
         allowNull: false,
         unique: true,
     }
-}, {
-    tableName: 'personregister',
-    timestamps: false,
 });
 
 module.exports = {PersonRegister};

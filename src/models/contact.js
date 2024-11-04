@@ -19,9 +19,6 @@ const Contact = sequelize.define("Contact", {
         type: DataTypes.STRING(100),
         allowNull: false,
     }
-}, {
-    tableName: "contact",
-    timestamps: false,
 });
 
-module.exports = {Contact};
+module.exports = { Contact };

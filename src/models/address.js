@@ -7,7 +7,7 @@ const Address = sequelize.define("Address", {
         primaryKey: true,
         autoIncrement: true,
     },
-    addressstreet: {
+    addressStreet: {
         type: DataTypes.STRING(100),
         allowNull: false,
     },
@@ -27,9 +27,6 @@ const Address = sequelize.define("Address", {
         type: DataTypes.INTEGER,
         allowNull: false,
     }
-}, {
-    tableName: "address",
-    timestamps: false,
 });
 
 module.exports = { Address };

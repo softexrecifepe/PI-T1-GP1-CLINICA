@@ -1,4 +1,5 @@
 const { Pet } = require("../../models/pet");
+require("../../models/associations.js");
 
 async function createPet (req, res){
     const { name, species, breed, color, weight, sex, age, photo, behavior, neurologicalDisorders, notes } = req.body;

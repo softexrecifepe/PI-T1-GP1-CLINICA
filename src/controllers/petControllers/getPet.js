@@ -1,4 +1,5 @@
 const { Pet } = require("../../models/pet");
+require("../../models/associations.js");
 
 async function getAllPets(req, res){
     try {

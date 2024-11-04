@@ -6,6 +6,7 @@ const addressRoutes = require("./src/routes/addressRoutes.js");
 const contactRoutes = require("./src/routes/contactRoutes.js");
 const roleRoutes = require("./src/routes/roleRoutes.js");
 const petRoutes = require("./src/routes/petRoutes.js");
+const treatmentRoutes = require("./src/routes/treatmentRoutes.js");
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use("/address", addressRoutes);
 app.use("/contact", contactRoutes);
 app.use("/role", roleRoutes);
 app.use("/pet", petRoutes);
+app.use("/treatment", treatmentRoutes);
 
 sequelize.sync().then(() => {
     console.log("Connected to the database and tables synchronized");

@@ -53,6 +53,4 @@ const Pet = sequelize.define('Pet', {
     },
   });
 
-  module.exports = {
-    Pet
-  }
+  module.exports = { Pet }

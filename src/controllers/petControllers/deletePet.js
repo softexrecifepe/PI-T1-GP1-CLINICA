@@ -1,4 +1,5 @@
 const { Pet } = require("../../models/pet");
+require("../../models/associations.js");
 
   async function deletePet (req, res){
     try {
