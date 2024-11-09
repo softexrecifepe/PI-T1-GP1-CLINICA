@@ -2,11 +2,15 @@ const { PersonRegister } = require("../../models/personRegister.js");
 const { Role } = require("../../models/role.js");
 const { Address } = require("../../models/address.js");
 const { Contact } = require("../../models/contact.js");
+const  utils  = require("../../../utils/utils.js");
 require("../../models/associations.js");
 
 async function createPerson(req, res) {
     try {
         const { name, cpf, address, contact, role } = req.body;
+        if(!utils.validateCPF(req.body.cpf)){
+            return res.status(400).send("CPF inválido");
+        }
         const newPerson = await PersonRegister.create({name, cpf});
         if (address) {
             await Address.create({
