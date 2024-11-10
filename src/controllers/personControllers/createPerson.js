@@ -11,7 +11,13 @@ async function createPerson(req, res) {
         if(!utils.validateCPF(req.body.cpf)){
             return res.status(400).send("CPF inválido");
         }
+
+        if (contact && !utils.validateEmail(contact.email)) {
+            return res.status(400).send("Email inválido");
+        }
+
         const newPerson = await PersonRegister.create({name, cpf});
+
         if (address) {
             await Address.create({
                 ...address,
