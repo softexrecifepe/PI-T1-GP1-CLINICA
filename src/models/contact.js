@@ -7,10 +7,6 @@ const Contact = sequelize.define("Contact", {
         primaryKey: true,
         autoIncrement: true,
     },
-    personregisterid: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     phonenumber: {
         type: DataTypes.STRING(20),
         allowNull: false,

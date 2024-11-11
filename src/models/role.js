@@ -7,10 +7,6 @@ const Role = sequelize.define("Role", {
         primaryKey: true,
         autoIncrement: true,
     },
-    personregisterid: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     roletype: {
         type: DataTypes.STRING(10),
         allowNull: false,

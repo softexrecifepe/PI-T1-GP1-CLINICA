@@ -11,7 +11,7 @@ const Address = sequelize.define("Address", {
         type: DataTypes.STRING(100),
         allowNull: false,
     },
-    addressnumber: {
+    addressNumber: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -19,12 +19,8 @@ const Address = sequelize.define("Address", {
         type: DataTypes.STRING(100),
         allowNull: false,
     },
-    postalcode: {
+    postalCode: {
         type: DataTypes.STRING(9),
-        allowNull: false,
-    },
-    personregisterid: {
-        type: DataTypes.INTEGER,
         allowNull: false,
     }
 });
