@@ -22,7 +22,7 @@ app.use("/role", roleRoutes);
 app.use("/pet", petRoutes);
 app.use("/treatment", treatmentRoutes);
 
-sequelize.sync().then(() => {
+sequelize.sync({force: true}).then(() => {
     console.log("Connected to the database and tables synchronized");
     app.listen(port, () => {
         console.log(`Server is running on port: ${port}`);

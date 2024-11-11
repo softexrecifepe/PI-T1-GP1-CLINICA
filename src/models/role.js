@@ -17,7 +17,7 @@ const Role = sequelize.define("Role", {
     crmv: {
         type: DataTypes.STRING(10),
         allowNull: true,
-    },
+    }
 });
 
 module.exports = { Role };
