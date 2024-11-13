@@ -1,4 +1,6 @@
 const { Pet } = require("../../models/pet");
+const { Role } = require("../../models/role.js");
+const { PersonRegister } = require("../../models/personRegister.js");
 require("../../models/associations.js");
 
 async function getAllPets(req, res){
@@ -59,7 +61,6 @@ async function getAllPets(req, res){
         include: [
           {
             model: Role,
-            as: 'tutor', // Este alias deve ser o mesmo definido na associação do Pet ao Role
             include: [
               {
                 model: PersonRegister,

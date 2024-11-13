@@ -20,7 +20,7 @@ const defineAssociations = () => {
     Role.belongsTo(PersonRegister, { foreignKey: 'personregisterid', targetKey: 'id' });
 
     // Role associations
-    Role.hasMany(Pet, { foreignKey: 'tutorId', as: 'tutor' });
+    Role.hasMany(Pet, { foreignKey: 'tutorId', });
     Role.hasMany(Patient, { foreignKey: 'vetId' });
 
     // Pet associations

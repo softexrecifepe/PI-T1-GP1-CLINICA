@@ -3,13 +3,13 @@ require("../../models/associations.js");
 
 async function createAddress(req, res) {
     try {
-        const { addressStreet, addressNumber, city, postalCode, personRegisterId } = req.body;
+        const { addressStreet, addressNumber, city, postalCode, personregisterid } = req.body;
         const newAddress = await Address.create({
             addressStreet,
             addressNumber,
             city,
             postalCode,
-            personRegisterId
+            personregisterid
         });
         res.status(201).json(newAddress);
     } catch (err) {

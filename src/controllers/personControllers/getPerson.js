@@ -1,6 +1,7 @@
 const {PersonRegister} = require("../../models/personRegister.js");
 const {Role} = require("../../models/role.js");
 const { Address } = require("../../models/address.js");
+const { Contact } = require("../../models/contact.js");
 require("../../models/associations.js");
 
 async function readAllPersons(req, res) {
@@ -66,7 +67,7 @@ async function readPersonByPostalCode(req, res) {
         const person = await PersonRegister.findAll({
             include: {
                 model: Address,
-                where: { postalcode: searchedPostalCode },
+                where: { postalCode: searchedPostalCode },
                 attributes: []
             }
         });
@@ -86,7 +87,7 @@ async function readPersonByPhoneNumber(req, res) {
         const person = await PersonRegister.findAll({
             include: {
                 model: Contact,
-                where: { phonenumber: cellPhone},
+                where: { phoneNumber: cellPhone},
                 attributes: []
             }
         });

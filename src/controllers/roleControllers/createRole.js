@@ -3,9 +3,9 @@ require("../../models/associations.js");
 
 async function createRole(req, res) {
     try {
-        const { personRegisterid, roleType, crmv } = req.body;
+        const { personregisterid, roleType, crmv } = req.body;
         const newRole = await Role.create({
-            personRegisterid,
+            personregisterid,
             roleType,
             crmv
         });
