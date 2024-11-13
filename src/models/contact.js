@@ -7,7 +7,7 @@ const Contact = sequelize.define("Contact", {
         primaryKey: true,
         autoIncrement: true,
     },
-    phonenumber: {
+    phoneNumber: {
         type: DataTypes.STRING(20),
         allowNull: false,
     },

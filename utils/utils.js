@@ -27,7 +27,6 @@ function validateEmail(email) {
 };
 
 
-
 module.exports = {
     validateCPF,
     validateEmail
