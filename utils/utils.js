@@ -18,13 +18,13 @@ function validateCPF(cpf) {
     const secondCheck = calculateCheckDigit(cpf, 10);
 
     return firstCheck === parseInt(cpf.charAt(9)) && secondCheck === parseInt(cpf.charAt(10));
-}
+};
 
 
 function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-}
+};
 
 
 
