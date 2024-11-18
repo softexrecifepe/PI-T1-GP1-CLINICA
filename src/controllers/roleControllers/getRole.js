@@ -26,9 +26,9 @@ async function readRoleById(req, res) {
 
 async function readRoleByRoleType(req, res) {
     try {
-        const { roleType } = req.params;
+        const { roletype } = req.params;
         const roles = await Role.findAll({
-            where: { roleType }
+            where: { roletype }
         });
         if (roles.length > 0) {
             res.status(200).json(roles);
