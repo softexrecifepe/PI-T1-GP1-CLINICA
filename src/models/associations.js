@@ -13,14 +13,14 @@ const defineAssociations = () => {
     // PersonRegister associations
     PersonRegister.hasMany(Address, { foreignKey: 'personregisterid', sourceKey: 'id' });
     PersonRegister.hasMany(Contact, { foreignKey: 'personregisterid', sourceKey: 'id' });
-    PersonRegister.hasMany(Role, { foreignKey: 'personregisterid', sourceKey: 'id' });
+    PersonRegister.hasOne(Role, { foreignKey: 'personregisterid', sourceKey: 'id' });
 
     Address.belongsTo(PersonRegister, { foreignKey: 'personregisterid', targetKey: 'id' });
     Contact.belongsTo(PersonRegister, { foreignKey: 'personregisterid', targetKey: 'id' });
     Role.belongsTo(PersonRegister, { foreignKey: 'personregisterid', targetKey: 'id' });
 
     // Role associations
-    Role.hasMany(Pet, { foreignKey: 'tutorId', });
+    Role.hasMany(Pet, { foreignKey: 'tutorId' });
     Role.hasMany(Patient, { foreignKey: 'vetId' });
 
     // Pet associations

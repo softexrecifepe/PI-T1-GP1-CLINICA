@@ -53,7 +53,7 @@ async function getAllPets(req, res){
     }
   };
   
-  async function getPetByTutorName(req, res){
+  async function getPetByTutorName(req, res) {
     const { tutorName } = req.params;
   
     try {
@@ -64,23 +64,25 @@ async function getAllPets(req, res){
             include: [
               {
                 model: PersonRegister,
-                where: { name: tutorName },
-                attributes: ['name'], // Apenas o nome será retornado
+                where: { name: tutorName },  
+                attributes: ['name'], 
               },
             ],
+            required: true, 
           },
         ],
       });
-  
       if (pets.length > 0) {
         res.json(pets);
       } else {
         res.status(404).json({ error: 'Nenhum pet encontrado para esse tutor.' });
       }
     } catch (error) {
+      console.error('Erro ao buscar pets pelo nome do tutor:', error);
       res.status(500).json({ error: 'Erro ao buscar pets pelo nome do tutor.' + error });
     }
   };
+
 
   module.exports = {
     getAllPets,
