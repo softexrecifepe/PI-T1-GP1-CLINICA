@@ -34,9 +34,12 @@ const defineAssociations = () => {
     // Treatment associations
     Treatment.hasMany(Medication, { foreignKey: 'treatmentId' });
     Treatment.hasMany(PatientsDailyChart, { foreignKey: 'treatmentId' });
+    Treatment.belongsTo(Patient, { foreignKey: 'patientId' });
 
     // PatientsDailyChart associations
     PatientsDailyChart.belongsTo(Role, { foreignKey: 'roleId' });
+    PatientsDailyChart.belongsTo(Treatment, { foreignKey: 'treatmentId' });
+
 };
 
 defineAssociations();

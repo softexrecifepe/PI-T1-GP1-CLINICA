@@ -1,9 +1,9 @@
-const {  PatientDailyChart } = require("../../models/PatientDailyChart")
+const { PatientsDailyChart } = require("../../models/patientsDailyChart")
 require("../../models/associations")
 
 async function deleteDailyChart(req, res){
     try{
-        const patientDailyChart = await PatientDailyChart.findOne({ where: {id: req.body.id} });
+        const patientDailyChart = await PatientsDailyChart .findOne({ where: {id: req.body.id} });
         if(patientDailyChart) {
             await patientDailyChart.destroy();
             res.status(204).json()

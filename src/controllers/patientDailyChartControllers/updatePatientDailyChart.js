@@ -1,4 +1,4 @@
-const { PatientsDailyChart } = require("../../models/patientsDailyChart");
+const { PatientsDailyChart } = require("../../models/patientsDailyChart")
 require("../../models/associations");
 
 async function updateDailyChart(req, res){

@@ -1,7 +1,9 @@
-const { PatientsDailyChart } = require("../../models/patientsDailyChart");
+const { PatientsDailyChart } = require("../../models/patientsDailyChart")
 const { Pet } = require("../../models/pet");
 const { Role } = require("../../models/role");
 const { PersonRegister } = require("../../models/personRegister");
+const { Treatment } = require("../../models/treatment");
+const { Patient } = require("../../models/patient");
 require("../../models/associations");
 
 // Buscar registro por ID
@@ -20,8 +22,21 @@ async function getDailyChartById(req, res) {
                     ],
                 },
                 {
-                    model: Pet,
-                    attributes: ['name'], // Inclui nome do pet
+                    model: Treatment,
+                    attributes: ['patientId'],
+                    include:[
+                        {
+                            model: Patient,
+                            attributes: ['petId'],
+                            include: [
+                                {
+                                    model: Pet,
+                                    attributes: ['name']// Inclui nome do pet
+                                },
+                            ],
+
+                    },
+                ], 
                 },
             ],
         });
@@ -42,9 +57,23 @@ async function getDailyChartByPetName(req, res) {
         const dailyCharts = await PatientsDailyChart.findAll({
             include: [
                 {
-                    model: Pet,
-                    where: { name: req.params.name }, // Busca por nome do pet
-                    attributes: ['name'],
+                    model: Treatment,
+                    attributes: ['patientId'],
+                    include: [
+                        {
+                            model: Patient,
+                            required: true,
+                            attributes: ['petId'],
+                            include: [
+                                {
+                                    model: Pet,
+                                    where: { name: req.params.name }, // Busca por nome do pet
+                                    attributes: ['name'],
+                                }
+                            ]
+                        }
+                    ]
+                    
                 },
             ],
         });
@@ -92,6 +121,8 @@ async function getDailyChartByCPF(req, res) {
             include: [
                 {
                     model: Role,
+                    required: true,
+                    attributes: ['personregisterid'],
                     include: [
                         {
                             model: PersonRegister,
@@ -101,8 +132,21 @@ async function getDailyChartByCPF(req, res) {
                     ],
                 },
                 {
-                    model: Pet,
-                    attributes: ['name'],
+                    model: Treatment,
+                    attributes: ['patientId'],
+                    include:[
+                        {
+                            model: Patient,
+                            attributes: ['petId'],
+                            include: [
+                                {
+                                    model: Pet,
+                                    attributes: ['name']// Inclui nome do pet
+                                },
+                            ],
+
+                    },
+                ], 
                 },
             ],
         });
