@@ -11,15 +11,15 @@ const Medication = sequelize.define('Medication', {
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    dosebykg: {
+    doseByKg: {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    administrationroute: {
+    administrationRoute: {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    administredat: {
+    administredAt: {
       type: DataTypes.TIME,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ const Medication = sequelize.define('Medication', {
       type: DataTypes.STRING(10),
       allowNull: false,
     },
-    isadministred: {
+    isAdministred: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },

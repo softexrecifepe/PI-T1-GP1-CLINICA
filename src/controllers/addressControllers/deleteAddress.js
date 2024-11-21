@@ -6,7 +6,7 @@ async function deleteAddressById(req, res) {
         const { id } = req.params;
         const deletedAddress = await Address.destroy({ where: { id } });
         if (deletedAddress) {
-            res.status(204).send();
+            res.status(204).json({message: "Endereço deletado com sucesso!"});
         } else {
             res.status(404).json({ Error: "Address not found" });
         }

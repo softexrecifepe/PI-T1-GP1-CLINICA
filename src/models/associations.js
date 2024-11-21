@@ -11,13 +11,13 @@ const { PatientsDailyChart } = require('./patientsDailyChart.js');
 
 const defineAssociations = () => {
     // PersonRegister associations
-    PersonRegister.hasMany(Address, { foreignKey: 'personregisterid', sourceKey: 'id' });
-    PersonRegister.hasMany(Contact, { foreignKey: 'personregisterid', sourceKey: 'id' });
-    PersonRegister.hasOne(Role, { foreignKey: 'personregisterid', sourceKey: 'id' });
+    PersonRegister.hasMany(Address, { foreignKey: 'personRegisterId', sourceKey: 'id' });
+    PersonRegister.hasMany(Contact, { foreignKey: 'personRegisterId', sourceKey: 'id' });
+    PersonRegister.hasOne(Role, { foreignKey: 'personRegisterId', sourceKey: 'id' });
 
-    Address.belongsTo(PersonRegister, { foreignKey: 'personregisterid', targetKey: 'id' });
-    Contact.belongsTo(PersonRegister, { foreignKey: 'personregisterid', targetKey: 'id' });
-    Role.belongsTo(PersonRegister, { foreignKey: 'personregisterid', targetKey: 'id' });
+    Address.belongsTo(PersonRegister, { foreignKey: 'personRegisterId', targetKey: 'id' });
+    Contact.belongsTo(PersonRegister, { foreignKey: 'personRegisterId', targetKey: 'id' });
+    Role.belongsTo(PersonRegister, { foreignKey: 'personRegisterId', targetKey: 'id' });
 
     // Role associations
     Role.hasMany(Pet, { foreignKey: 'tutorId' });

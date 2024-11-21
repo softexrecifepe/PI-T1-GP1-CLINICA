@@ -47,8 +47,8 @@ async function readPersonsByRole(req, res) {
         const person = await PersonRegister.findAll({
             include: {
                 model: Role,
-                where: { roletype: role },
-                attributes: []
+                where: { roleType: role },
+                attributes: ['roleType']
             }
         });
         if (person.length > 0) {
@@ -68,7 +68,11 @@ async function readPersonByPostalCode(req, res) {
             include: {
                 model: Address,
                 where: { postalCode: searchedPostalCode },
-                attributes: []
+                attributes: [
+                    'addressStreet',
+                    'addressNumber',
+                    'city',
+                    'postalCode']
             }
         });
         if (person.length > 0) {
@@ -88,7 +92,10 @@ async function readPersonByPhoneNumber(req, res) {
             include: {
                 model: Contact,
                 where: { phoneNumber: cellPhone},
-                attributes: []
+                attributes: [
+                    "phoneNumber",
+                    "email",
+                ]
             }
         });
         if (person.length > 0) {

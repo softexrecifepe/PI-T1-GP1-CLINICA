@@ -4,7 +4,7 @@ require("../../models/associations.js");
 async function updateAddressById(req, res) {
     try {
         const { id } = req.params; 
-        const { addressStreet, addressNumber, city, postalCode, personregisterId } = req.body;
+        const { addressStreet, addressNumber, city, postalCode, personRegisterId } = req.body;
         const address = await Address.findByPk(id);
         
         if (!address) {

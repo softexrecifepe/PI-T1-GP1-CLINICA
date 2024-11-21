@@ -89,7 +89,7 @@ const readAllTreatments = async (req, res) => {
 
     try {
         // Fetching all treatments with limit and offset for pagination
-        const treatments = await Treatment.findAndCountAll({
+        const treatments = await Treatment.findAll({
             include: [Medication, PatientsDailyChart],
             limit: parseInt(limit),
             offset: (page - 1) * limit,
@@ -100,7 +100,7 @@ const readAllTreatments = async (req, res) => {
             totalItems: treatments.count,
             totalPage: Math.ceil(treatments.count / limit),
             currentPage: page,
-            treatments: treatments.rows,
+            treatments: treatments,
         });
     } catch (error) {
         // Error handling when fetching the treatments

@@ -68,7 +68,8 @@ async function getAllPets(req, res){
                 attributes: ['name'], 
               },
             ],
-            required: true, 
+            required: true,
+            attributes: ['roleType'],
           },
         ],
       });

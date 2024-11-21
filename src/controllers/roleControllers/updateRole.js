@@ -4,7 +4,7 @@ require("../../models/associations.js");
 async function updateRoleById(req, res) {
     try {
         const { id } = req.params; 
-        const { personRegisterid, roleType, crmv } = req.body;
+        const { personRegisterId, roleType, crmv } = req.body;
         const role = await Role.findByPk(id);
         
         if (!role) {
@@ -12,7 +12,7 @@ async function updateRoleById(req, res) {
         }
 
         await role.update({ 
-            personRegisterid: personRegisterid || role.personregisterid, 
+            personRegisterId: personRegisterId || role.personRegisterId, 
             roleType: roleType || role.roletype,
             crmv: crmv || role.crmv
         });

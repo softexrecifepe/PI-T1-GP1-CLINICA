@@ -3,9 +3,9 @@ require("../../models/associations.js");
 
 async function createContact(req, res) {
     try {
-        const { personregisterid, phoneNumber, email } = req.body;
+        const { personRegisterId, phoneNumber, email } = req.body;
         const newContact = await Contact.create({ 
-            personregisterid, 
+            personRegisterId, 
             phoneNumber, 
             email 
         });
