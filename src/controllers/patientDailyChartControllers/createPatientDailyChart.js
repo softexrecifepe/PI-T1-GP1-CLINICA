@@ -7,7 +7,11 @@ async function createPatientsDailyChart(req, res){
         const newDailyChart = await PatientsDailyChart.create( req.body );
         res.status(201).json(newDailyChart);
     } catch(error){
-        res.status(500).json({error: `erro ao criar um novo registro ${error}`});
+        res.status(500).json({
+            error: "Erro ao criar um novo registro",
+            details: error.errors ? error.errors.map(err => err.message) : error.message,
+          });
+          
     }
 }
 

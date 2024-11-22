@@ -3,10 +3,10 @@ require("../../models/associations")
 
 async function deleteDailyChart(req, res){
     try{
-        const patientDailyChart = await PatientsDailyChart .findOne({ where: {id: req.body.id} });
+        const patientDailyChart = await PatientsDailyChart.findOne({ where: {id: req.params.id} });
         if(patientDailyChart) {
-            await patientDailyChart.destroy();
-            res.status(204).json()
+            await patientDailyChart.destroy()   ;
+            res.status(204).send("registro excluido com sucesso")
         } else {
             res.status(404).json({error: "Registro nâo encontrado"});
         }

@@ -1,7 +1,7 @@
 const {createPatientsDailyChart} = require("./createPatientDailyChart");
 const {updateDailyChart} = require("./updatePatientDailyChart");
 const {deleteDailyChart} = require("./deletePatientDailyChart");
-const {getDailyChartById, getDailyChartByPetName, getDailyChartByDate, getDailyChartByCPF} = require("./getPatientDailyChart");
+const {getDailyChartById, getDailyChartByPetName, getDailyChartByDate, getDailyChartByCPF, getAllDailyCharts} = require("./getPatientDailyChart");
 
 module.exports = {
     createPatientsDailyChart,
@@ -10,5 +10,6 @@ module.exports = {
     getDailyChartByCPF,
     getDailyChartByDate,
     getDailyChartById,
-    getDailyChartByPetName
+    getDailyChartByPetName,
+    getAllDailyCharts
 };

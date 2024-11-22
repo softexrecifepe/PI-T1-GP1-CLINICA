@@ -3,6 +3,8 @@ const { Medication } = require("../../models/medication.js");
 const { PatientsDailyChart } = require("../../models/patientsDailyChart.js");
 const { Pet } = require("../../models/pet");
 const { PersonRegister } = require("../../models/personRegister.js");
+const { Patient } = require("../../models/patient.js");
+const { Role } = require("../../models/role.js");
 require("../../models/associations.js");
 
 // Function to read a treatment by ID
@@ -12,7 +14,30 @@ const readTreatmentById = async (req, res) => {
     try {
         // Fetching the treatment from the database
         const treatment = await Treatment.findByPk(treatmentId, {
-            include: [Medication, PatientsDailyChart], // Including related data
+            include: [
+                {model: Medication, 
+                    attributes: [
+                        "name",
+                        "doseByKg",
+                        "administrationRoute",
+                        "administredAt",
+                        "frequency",
+                        "isAdministred"]},
+                {model: PatientsDailyChart,
+                    attributes: [
+                         "avaliationTime",
+                        "symptoms",
+                        "alimentation",
+                        "feedingProbe",
+                        "temperature",
+                       "glicose",
+                        "bpm",
+                        "fr",
+                        "normalUrine",
+                        "isBetter",
+                        "generalStatus",
+                        "notes",
+                        "vetNotes"]}], // Including related data
         });
 
         // Checking if the treatment was found
@@ -35,10 +60,41 @@ const readTreatmentByPetName = async (req, res) => {
     try {
         // Fetching treatments associated with the pet's name
         const treatments = await Treatment.findAll({
-            include: [{
-                model: Pet,
-                where: { name: petName },
-            }],
+            include: [
+                {model: Patient,
+                    required: true,
+                    attributes: ["admission"],
+                    include:{
+                        model: Pet,
+                            attributes: ["name"],
+                            required: true,
+                            where: { name: petName }
+                    }
+                },
+            ],include: [
+                {model: Medication, 
+                    attributes: [
+                        "name",
+                        "doseByKg",
+                        "administrationRoute",
+                        "administredAt",
+                        "frequency",
+                        "isAdministred"]},
+                {model: PatientsDailyChart,
+                    attributes: [
+                         "avaliationTime",
+                        "symptoms",
+                        "alimentation",
+                        "feedingProbe",
+                        "temperature",
+                       "glicose",
+                        "bpm",
+                        "fr",
+                        "normalUrine",
+                        "isBetter",
+                        "generalStatus",
+                        "notes",
+                        "vetNotes"]}] // Including related data
         });
 
         // Checking if treatments were found
@@ -62,12 +118,52 @@ const readTreatmentByTutorName = async (req, res) => {
         // Fetching treatments associated with the tutor's name
         const treatments = await Treatment.findAll({
             include: [{
-                model: Medication,
-                include: [{
-                    model: PersonRegister,
-                    where: { name: tutorName },
-                }],
-            }],
+                model: Patient,
+                attributes: ["petId"],
+                include:[
+                    {
+                        model:Pet,
+                        attributes: ["roleID"],
+                        include:[
+                            {
+                                model:Role,
+                                attributes: ["personRegisterId"],
+                                include:[
+                                    {
+                                        model:PersonRegister,
+                                        required: true,
+                                        where: { name: tutorName }
+                                    }
+                                ]
+                            }
+                        ]
+                    },{model: Medication, 
+                        attributes: [
+                            "name",
+                            "doseByKg",
+                            "administrationRoute",
+                            "administredAt",
+                            "frequency",
+                            "isAdministred"]},
+                    {model: PatientsDailyChart,
+                        attributes: [
+                             "avaliationTime",
+                            "symptoms",
+                            "alimentation",
+                            "feedingProbe",
+                            "temperature",
+                           "glicose",
+                            "bpm",
+                            "fr",
+                            "normalUrine",
+                            "isBetter",
+                            "generalStatus",
+                            "notes",
+                            "vetNotes"]}
+                ]
+            }
+                
+            ]
         });
 
         // Checking if treatments were found
@@ -85,23 +181,23 @@ const readTreatmentByTutorName = async (req, res) => {
 
 // Function to read all treatments with pagination
 const readAllTreatments = async (req, res) => {
-    const { page = 1, limit = 10 } = req.query;
-
     try {
         // Fetching all treatments with limit and offset for pagination
         const treatments = await Treatment.findAll({
-            include: [Medication, PatientsDailyChart],
-            limit: parseInt(limit),
-            offset: (page - 1) * limit,
+            include: [ {model: Patient,
+                        required: true,
+                        attributes: ["admission"],
+                        include:{
+                            model: Pet,
+                            attributes: ["name"],
+                            required: true,
+                            where: { name: petName }
+                }
+            }],
         });
 
         // Responding with the list of treatments and pagination information
-        res.status(200).json({
-            totalItems: treatments.count,
-            totalPage: Math.ceil(treatments.count / limit),
-            currentPage: page,
-            treatments: treatments,
-        });
+        res.status(200).json(treatments);
     } catch (error) {
         // Error handling when fetching the treatments
         res.status(400).json({ error: error.message });
