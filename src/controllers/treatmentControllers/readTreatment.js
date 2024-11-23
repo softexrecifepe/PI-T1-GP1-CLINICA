@@ -119,49 +119,57 @@ const readTreatmentByTutorName = async (req, res) => {
         const treatments = await Treatment.findAll({
             include: [{
                 model: Patient,
+                required: true,
                 attributes: ["petId"],
                 include:[
                     {
                         model:Pet,
-                        attributes: ["roleID"],
+                        required: true,
+                        attributes: ["tutorId"],
                         include:[
                             {
                                 model:Role,
+                                required: true,
                                 attributes: ["personRegisterId"],
                                 include:[
                                     {
                                         model:PersonRegister,
                                         required: true,
-                                        where: { name: tutorName }
+                                        where: { name: tutorName },
+                                        attributes: [
+                                            "name",
+                                            "cpf"
+                                        ]
                                     }
                                 ]
                             }
                         ]
-                    },{model: Medication, 
-                        attributes: [
-                            "name",
-                            "doseByKg",
-                            "administrationRoute",
-                            "administredAt",
-                            "frequency",
-                            "isAdministred"]},
-                    {model: PatientsDailyChart,
-                        attributes: [
-                             "avaliationTime",
-                            "symptoms",
-                            "alimentation",
-                            "feedingProbe",
-                            "temperature",
-                           "glicose",
-                            "bpm",
-                            "fr",
-                            "normalUrine",
-                            "isBetter",
-                            "generalStatus",
-                            "notes",
-                            "vetNotes"]}
+                    }
                 ]
-            }
+            },
+            {model: Medication, 
+                attributes: [
+                    "name",
+                    "doseByKg",
+                    "administrationRoute",
+                    "administredAt",
+                    "frequency",
+                    "isAdministred"]},
+            {model: PatientsDailyChart,
+                attributes: [
+                     "avaliationTime",
+                    "symptoms",
+                    "alimentation",
+                    "feedingProbe",
+                    "temperature",
+                   "glicose",
+                    "bpm",
+                    "fr",
+                    "normalUrine",
+                    "isBetter",
+                    "generalStatus",
+                    "notes",
+                    "vetNotes"]}
                 
             ]
         });
