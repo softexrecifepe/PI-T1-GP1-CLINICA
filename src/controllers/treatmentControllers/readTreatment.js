@@ -198,8 +198,6 @@ const readAllTreatments = async (req, res) => {
                         include:{
                             model: Pet,
                             attributes: ["name"],
-                            required: true,
-                            where: { name: petName }
                 }
             }],
         });
