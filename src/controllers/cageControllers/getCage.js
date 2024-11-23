@@ -6,7 +6,7 @@ async function getAllCages (req, res) {
         const cages = await Cage.findAll();
         res.status(200).json(cages);
       } catch (error) {
-        res.status(500).json({ error: "Erro ao localizar as gaiolas" });
+        res.status(500).json(error);
       }   
 };
 
