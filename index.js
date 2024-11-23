@@ -6,6 +6,8 @@ const addressRoutes = require("./src/routes/addressRoutes.js");
 const contactRoutes = require("./src/routes/contactRoutes.js");
 const roleRoutes = require("./src/routes/roleRoutes.js");
 const petRoutes = require("./src/routes/petRoutes.js");
+const patientRoutes = require("./src/routes/patientRoutes.js");
+const cageRoutes = require("./src/routes/cageRoutes.js");
 const treatmentRoutes = require("./src/routes/treatmentRoutes.js");
 const dailychartRoutes = require("./src/routes/dailyChartRoutes.js");
 
@@ -21,6 +23,8 @@ app.use("/address", addressRoutes);
 app.use("/contact", contactRoutes);
 app.use("/role", roleRoutes);
 app.use("/pet", petRoutes);
+app.use("/patient", patientRoutes);
+app.use("/cage", cageRoutes);
 app.use("/treatment", treatmentRoutes);
 app.use("/dailyChart", dailychartRoutes);
 
