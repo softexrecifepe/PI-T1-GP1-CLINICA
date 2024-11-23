@@ -1,7 +1,7 @@
-const { createMedication } = require('../controllers/medicationControllers/createMedications');
-const { getMedicationById, getMedicationByName, getAllMedication } = require('../controllers/medicationControllers/readMedications');
-const { updateMedication } = require('../controllers/medicationControllers/updateMedications');
-const { deleteMedication } = require('../controllers/medicationControllers/deleteMedications');
+const { createMedication } = require('./createMedications');
+const { getMedicationById, getMedicationByName, getAllMedication } = require('./readMedications');
+const { updateMedication } = require('./updateMedications');
+const { deleteMedication } = require('./deleteMedications');
 
 module.exports = {
     createMedication,

@@ -1,4 +1,4 @@
-const { Medication } = require('../../db/models/modelSequelize');
+const { Medication } = require('../../models/medication');
 
 async function deleteMedication(req, res) {
     const {id} = req.params;

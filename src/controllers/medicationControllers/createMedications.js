@@ -1,4 +1,4 @@
-const {Medication} = require('../../db/models/modelSequelize');
+const {Medication} = require('../../models/medication');
 
 async function createMedication(req, res) {
     const {name, doseByKg, administrationRoute, administredAt, frequency, isAdministred, treatmentId} = req.body;
