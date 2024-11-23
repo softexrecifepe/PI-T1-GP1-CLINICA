@@ -146,7 +146,7 @@ async function getDailyChartByCPF(req, res) {
                 {
                     model: Role,
                     required: true,
-                    attributes: ['personregisterid'],
+                    attributes: ['personRegisterId'],
                     include: [
                         {
                             model: PersonRegister,
