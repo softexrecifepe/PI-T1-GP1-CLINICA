@@ -2,17 +2,20 @@ const {Address} = require("../../models/address.js");
 require("../../models/associations.js");
 
 async function deleteAddressById(req, res) {
+    const {id} = req.params;
+
     try {
-        const { id } = req.params;
-        const deletedAddress = await Address.destroy({ where: { id } });
-        if (deletedAddress) {
-            res.status(204).json({message: "Endereço deletado com sucesso!"});
-        } else {
-            res.status(404).json({ Error: "Address not found" });
+        const address = await Address.findByPk(id);
+        if (!address) {
+            return res.status(404).json({ message: "Address not fund" });
         }
-    } catch (err) {
-        res.status(500).json({ Error: "Error deleting address", details: err.message });
-    };
+
+        await address.destroy();
+        res.status(200).json({ message: "Address deleted successsfully" });
+      } catch (error) {
+        console.error("Error deleting address:", error);
+        res.status(400).json({ error: error.message });
+      }
 };
 
 module.exports = {

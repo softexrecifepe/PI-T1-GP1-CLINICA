@@ -63,9 +63,21 @@ async function readAddressByPostalCode(req, res) {
     };
 };
 
+async function readAllAddress(req, res) {
+    try {
+        const address = await Address.findAll();
+        res.status(200).json(address);
+    } catch (error) {
+        console.error("Error fetching address:", error);
+        res.status(400).json({error: error.message});
+    }
+    
+}
+
 module.exports = {
     readAddressById,
     readAddressByAddressStreet,
     readAddressByCity,
-    readAddressByPostalCode
+    readAddressByPostalCode,
+    readAllAddress
 }
