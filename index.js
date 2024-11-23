@@ -9,7 +9,7 @@ const petRoutes = require("./src/routes/petRoutes.js");
 const patientRoutes = require("./src/routes/patientRoutes.js");
 const cageRoutes = require("./src/routes/cageRoutes.js");
 const treatmentRoutes = require("./src/routes/treatmentRoutes.js");
-const medicationRutes = require("./src/routes/medicationRutes.js");
+const medicationRutes = require("./src/routes/medicationRoutes.js");
 const dailychartRoutes = require("./src/routes/dailyChartRoutes.js");
 
 dotenv.config();

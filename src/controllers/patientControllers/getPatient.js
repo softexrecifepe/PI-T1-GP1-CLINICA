@@ -36,7 +36,7 @@ async function getMostRecentPatient(req, res){
         res.status(404).json({ error: 'Nenhum paciente encontrado.' });
       }
     } catch (error) {
-      res.status(500).json({ error: 'Erro ao buscar o paciente mais recente.'  + error});
+      res.status(500).json({ error: 'Erro ao buscar o paciente mais recente.' + error});
     }
   };
 

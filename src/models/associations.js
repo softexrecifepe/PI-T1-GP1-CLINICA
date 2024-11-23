@@ -29,7 +29,7 @@ const defineAssociations = () => {
     // Patient associations
     Patient.hasMany(Treatment, { foreignKey: 'patientId' });
     Patient.belongsTo(Pet, { foreignKey: 'petId' });
-    Patient.belongsTo(Cage, { foreignKey: 'patientId' });
+    Patient.belongsTo(Cage, { foreignKey: 'cageId' });
 
     // Treatment associations
     Treatment.hasMany(Medication, { foreignKey: 'treatmentId' });
