@@ -5,7 +5,7 @@ require("../../models/associations.js");
 
 async function getAllPets(req, res){
     try {
-      const pets = await Pet.findAll(); // Busca todos os pets
+      const pets = await Pet.findAll();
       res.json(pets);
     } catch (error) {
       res.status(500).json({ error: 'Erro ao buscar os pets.' + error });
@@ -41,7 +41,7 @@ async function getAllPets(req, res){
   async function getMostRecentPet(req, res){
     try {
       const recentPet = await Pet.findOne({
-        order: [['createdAt', 'DESC']], // Ordena pela data de criação (mais recente primeiro)
+        order: [['createdAt', 'DESC']], 
       });
       if (recentPet) {
         res.json(recentPet);

@@ -7,7 +7,6 @@ const { Patient } = require("../../models/patient");
 const sequelize = require("../../db/connection");
 require("../../models/associations");
 
-// Buscar registro por ID
 async function getDailyChartById(req, res) {
     try {
         const dailyChart = await PatientsDailyChart.findOne({
@@ -25,7 +24,7 @@ async function getDailyChartById(req, res) {
                             attributes: [
                                 'cpf',
                                 'name',
-                            ], // Inclui CPF e nome no get do dayliChart
+                            ],
                         },
                     ],
                 },
@@ -39,7 +38,7 @@ async function getDailyChartById(req, res) {
                             include: [
                                 {
                                     model: Pet,
-                                    attributes: ['name']// Inclui nome do pet
+                                    attributes: ['name']
                                 },
                             ],
 
@@ -59,7 +58,6 @@ async function getDailyChartById(req, res) {
     }
 }
 
-// Buscar registros por nome do pet
 async function getDailyChartByPetName(req, res) {
     try {
         const dailyCharts = await PatientsDailyChart.findAll({
@@ -76,7 +74,7 @@ async function getDailyChartByPetName(req, res) {
                             include: [
                                 {
                                     model: Pet,
-                                    where: { name: req.params.petName }, // Busca por nome do pet
+                                    where: { name: req.params.petName },
                                     attributes: ['name'],
                                 }
                             ]
@@ -97,13 +95,12 @@ async function getDailyChartByPetName(req, res) {
     }
 }
 
-// Buscar registros por data específica
 async function getDailyChartByDate(req, res) {
     try {
         const dailyCharts = await PatientsDailyChart.findAll({
             where: sequelize.where(
                 sequelize.fn('DATE', sequelize.col('avaliationTime')),
-                req.params.date // Data no formato YYYY-MM-DD
+                req.params.date //
             ),
             include: [
                 {
@@ -137,7 +134,6 @@ async function getDailyChartByDate(req, res) {
     }
 }
 
-// Buscar registros por CPF
 async function getDailyChartByCPF(req, res) {
     try {
         const dailyCharts = await PatientsDailyChart.findAll({
@@ -150,7 +146,7 @@ async function getDailyChartByCPF(req, res) {
                     include: [
                         {
                             model: PersonRegister,
-                            where: { cpf: req.params.cpf }, // Busca por CPF
+                            where: { cpf: req.params.cpf },
                             attributes: ['cpf'],
                         },
                     ],
@@ -165,7 +161,7 @@ async function getDailyChartByCPF(req, res) {
                             include: [
                                 {
                                     model: Pet,
-                                    attributes: ['name']// Inclui nome do pet
+                                    attributes: ['name']
                                 },
                             ],
 
@@ -202,7 +198,7 @@ async function getAllDailyCharts(req, res) {
                             attributes: [
                                 'cpf',
                                 'name',
-                            ], // Inclui CPF e nome no get do dayliChart
+                            ],
                         },
                     ],
                 },
@@ -216,7 +212,7 @@ async function getAllDailyCharts(req, res) {
                             include: [
                                 {
                                     model: Pet,
-                                    attributes: ['name']// Inclui nome do pet
+                                    attributes: ['name']
                                 },
                             ],
 

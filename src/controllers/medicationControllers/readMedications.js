@@ -16,13 +16,11 @@ async function getMedicationById(req, res) {
 }
 
 async function getMedicationByName(req, res) {
-    const { name } = req.params;  // O nome vem de req.params.name
+    const { name } = req.params; 
 
-    // Verifica se o nome foi passado corretamente
     console.log("Searching for medication with name:", name);
 
     try {
-        // A consulta busca pelo nome correto (que é uma string)
         const medication = await Medication.findOne({ where: { name: name } });
 
         if (!medication) {

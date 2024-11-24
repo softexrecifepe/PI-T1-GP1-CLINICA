@@ -28,7 +28,7 @@ async function getPatientById (req, res) {
 async function getMostRecentPatient(req, res){
     try {
       const recentPatient = await Patient.findOne({
-        order: [['createdAt', 'DESC']], // Ordena pela data de criação (mais recente primeiro)
+        order: [['createdAt', 'DESC']],
       });
       if (recentPatient) {
         res.json(recentPatient);
@@ -39,8 +39,6 @@ async function getMostRecentPatient(req, res){
       res.status(500).json({ error: 'Erro ao buscar o paciente mais recente.' + error});
     }
   };
-
-// async function getPatientByPetName(req, res) { };
 
 module.exports = {
     getAllPatients,

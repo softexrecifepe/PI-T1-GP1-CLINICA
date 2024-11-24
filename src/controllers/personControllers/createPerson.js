@@ -18,19 +18,19 @@ async function createPerson(req, res) {
         if (address) {
             await Address.create({
                 ...address,
-                personRegisterId: newPerson.id,  // Atribui a chave estrangeira
+                personRegisterId: newPerson.id,
             });
         }
         if (contact) {
             await Contact.create({
                 ...contact,
-                personRegisterId: newPerson.id,  // Atribui a chave estrangeira
+                personRegisterId: newPerson.id, 
             });
         }
         if (role) {
             await Role.create({
                 ...role,
-                personRegisterId: newPerson.id,  // Atribui a chave estrangeira
+                personRegisterId: newPerson.id, 
             });
         }
         res.status(201).json({ message: "New person created successfully", newPerson });

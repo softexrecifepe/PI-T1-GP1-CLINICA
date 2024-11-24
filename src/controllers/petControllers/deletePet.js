@@ -7,7 +7,7 @@ require("../../models/associations.js");
   
       if (pet) {
         await pet.destroy();
-        res.status(204).json(); // Retorna status 204 (sem conteúdo)
+        res.status(204).json();
       } else {
         res.status(404).json({ error: 'Pet não encontrado.' });
       }
