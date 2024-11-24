@@ -33,6 +33,11 @@ Este é um sistema de gestão para clínicas veterinárias que permite registrar
    ```bash
    node index.js
 
+## Links Importantes:
+**API-test**: https://pi-t1-gp1-clinica-mascots-final-prototype.onrender.com
+**Documentação**:
+
+
 ## Rotas da API
 
 ### **Person Register**
