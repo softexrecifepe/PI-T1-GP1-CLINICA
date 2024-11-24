@@ -1,5 +1,5 @@
 const { createPerson } = require("./createPerson");
-const { readAllPersons, readPersonById, readPersonByName, readPersonByPhoneNumber, readPersonByPostalCode, readPersonsByRole } = require("./getPerson");
+const { readAllPersons, readPersonById, readPersonByName, readPersonByPhoneNumber, readPersonByPostalCode, readPersonsByRole, readAllPersonCompleteRegister, readPersonCompleteRegisterById} = require("./getPerson");
 const { updatePersonById } = require("./updatePerson");
 const { deletePersonById } = require("./deletePerson");
 
@@ -10,6 +10,8 @@ module.exports = {
     readPersonByName,
     readPersonByPhoneNumber,
     readPersonByPostalCode,
+    readAllPersonCompleteRegister,
+    readPersonCompleteRegisterById,
     readPersonsByRole,
     updatePersonById,
     deletePersonById

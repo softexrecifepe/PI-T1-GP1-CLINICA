@@ -3,6 +3,8 @@ const personControllers = require("../controllers/personControllers/personExport
 
 const router = express.Router();
 
+router.get("/complete/id/:id", personControllers.readPersonCompleteRegisterById)
+router.get('/complete', personControllers.readAllPersonCompleteRegister)
 router.get('/', personControllers.readAllPersons);
 router.get('/id/:id', personControllers.readPersonById);
 router.get('/name/:name', personControllers.readPersonByName);

@@ -13,6 +13,79 @@ async function readAllPersons(req, res) {
     };
 };
 
+async function readAllPersonCompleteRegister(req, res) {
+    try {
+        const person = await PersonRegister.findAll({
+            include: [{
+                model: Address,
+                attributes: [
+                    'addressStreet',
+                    'addressNumber',
+                    'city',
+                    'postalCode'
+                ],
+            },
+            {
+                model: Contact,
+                attributes: [
+                    'email',
+                    'phoneNumber'
+                ]
+            },
+            {
+                model: Role,
+                attributes: [
+                    'roleType',
+                    'crmv'
+                ]
+            }]
+        });
+
+        res.status(200).json(person);
+    } catch (err) {
+        res.status(500).json({ Error: "Error retriving persons", details: err.message});
+    };
+};
+
+async function readPersonCompleteRegisterById(req, res) {
+    try {
+        const { id } = req.params
+        const person = await PersonRegister.findByPk(id,
+            {include:[
+                {model: Address,
+                attributes: [
+                    'addressStreet',
+                    'addressNumber',
+                    'city',
+                    'postalCode'
+                ],
+            },
+            {
+                model: Contact,
+                attributes: [
+                    'email',
+                    'phoneNumber'
+                ]
+            },
+            {
+                model: Role,
+                attributes: [
+                    'roleType',
+                    'crmv'
+                ]
+            }
+        ]}
+    );
+        if (person) {
+            res.status(200).json(person)
+        } else {
+            res.status(404).json({Error: "Person not found"});
+        }
+    } catch (err) {
+        res.status(500).json({ Error: "Error retriving persons", details: err.message});
+    }
+};
+
 async function readPersonById(req, res) {
     try {
         const { id } = req.params
@@ -114,5 +187,7 @@ module.exports = {
     readPersonByName,
     readPersonByPhoneNumber,
     readPersonByPostalCode,
-    readPersonsByRole
+    readPersonsByRole,
+    readAllPersonCompleteRegister,
+    readPersonCompleteRegisterById
 }
