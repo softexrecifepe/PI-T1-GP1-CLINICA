@@ -43,6 +43,8 @@ Este é um sistema de gestão para clínicas veterinárias que permite registrar
 
 ### **Person Register**
 
+- GET /person/complete/: Recupera o registro completo de todas as pessoas.
+- GET /person/complete/id/:id: Recupera o registro completo de uma pessoa por ID.
 -  GET /person/: Recupera todas as pessoas.
 -  GET /person/id/:id: Recupera uma pessoa pelo ID.
 -  GET /person/name/:name: Recupera uma pessoa pelo nome. Exemplos: Alice Silva, Carlos Pereira, etc.
@@ -55,6 +57,8 @@ Este é um sistema de gestão para clínicas veterinárias que permite registrar
 -  PUT /person/id/:id: Atualiza uma pessoa pelo ID.
 
 ### **Address**
+
+- GET /address/all-address: Recupera todos os endereços.
 - GET /address/id/:id: Recupera um endereço pelo ID.
 - GET /address/street/:addressStreet: Recupera endereços pelo nome da rua.
 - GET /address/city/:city: Recupera endereços pela cidade.
