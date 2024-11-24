@@ -52,7 +52,7 @@ Este é um sistema de gestão para clínicas veterinárias que permite registrar
 -  POST /person/: Cria uma nova pessoa.
 -  DELETE /person/id/:id: Deleta uma pessoa pelo ID.
 -  DELETE /person/name/:name: Deleta uma pessoa pelo nome.
-- - PUT /person/id/:id: Atualiza uma pessoa pelo ID.
+-  PUT /person/id/:id: Atualiza uma pessoa pelo ID.
 
 ### **Address**
 - GET /address/id/:id: Recupera um endereço pelo ID.
