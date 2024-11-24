@@ -1,10 +1,21 @@
 const {Address} = require("../../models/address.js");
+const { PersonRegister } = require("../../models/personRegister.js");
 require("../../models/associations.js");
 
 async function readAddressById(req, res) {
     try {
         const { id } = req.params;
-        const address = await Address.findByPk(id);
+        const address = await Address.findByPk(id, {
+            include:[
+                {
+                    model: PersonRegister,
+                    attributes:[
+                        'name',
+                        'cpf'
+                    ]
+                }
+            ]
+        });
         if (address) {
             res.status(200).json(address);
         } else {
@@ -19,8 +30,18 @@ async function readAddressByAddressStreet(req, res) {
     try {
         const { addressStreet } = req.params;
         const addresses = await Address.findAll({
-            where: { addressStreet }
+            where: { addressStreet },
+            include:[
+                {
+                    model: PersonRegister,
+                    attributes:[
+                        'name',
+                        'cpf'
+                    ]
+                }
+            ]
         });
+
         if (addresses.length > 0) {
             res.status(200).json(addresses);
         } else {
@@ -35,8 +56,18 @@ async function readAddressByCity(req, res) {
     try {
         const { city } = req.params;
         const addresses = await Address.findAll({
-            where: { city }
+            where: { city },
+            include:[
+                {
+                    model: PersonRegister,
+                    attributes:[
+                        'name',
+                        'cpf'
+                    ]
+                }
+            ]
         });
+
         if (addresses.length > 0) {
             res.status(200).json(addresses);
         } else {
@@ -51,8 +82,18 @@ async function readAddressByPostalCode(req, res) {
     try {
         const { postalCode } = req.params;
         const addresses = await Address.findAll({
-            where: { postalCode }
+            where: { postalCode },
+            include:[
+                {
+                    model: PersonRegister,
+                    attributes:[
+                        'name',
+                        'cpf'
+                    ]
+                }
+            ]
         });
+
         if (addresses.length > 0) {
             res.status(200).json(addresses);
         } else {
@@ -65,7 +106,17 @@ async function readAddressByPostalCode(req, res) {
 
 async function readAllAddress(req, res) {
     try {
-        const address = await Address.findAll();
+        const address = await Address.findAll({
+            include:[
+                {
+                    model: PersonRegister,
+                    attributes:[
+                        'name',
+                        'cpf'
+                    ]
+                }
+            ]
+        });
         res.status(200).json(address);
     } catch (error) {
         console.error("Error fetching address:", error);

@@ -1,9 +1,19 @@
 const {Contact} = require("../../models/contact.js");
+const { PersonRegister } = require("../../models/personRegister.js");
 require("../../models/associations.js");
 
 async function readAllContacts(req, res) {
     try {
-        const contacts = await Contact.findAll();
+        const contacts = await Contact.findAll(
+            {include:[
+            {
+                model: PersonRegister,
+                attributes:[
+                    'name',
+                    'cpf'
+                ]
+            }
+        ]});
         res.status(200).json(contacts);
     } catch (err) {
         res.status(500).json({ Error: "Error retrieving contacts", details: err.message });
@@ -13,7 +23,15 @@ async function readAllContacts(req, res) {
 async function readContactById(req, res) {
     try {
         const { id } = req.params;
-        const contact = await Contact.findByPk(id);
+        const contact = await Contact.findByPk(id,
+            {include: {
+                model:PersonRegister,
+                attributes: [
+                    'name',
+                    'cpf'
+                ]
+            }}
+        );
         if (contact) {
             res.status(200).json(contact);
         } else {
@@ -27,7 +45,17 @@ async function readContactById(req, res) {
 async function readContactByPhoneNumber(req, res) {
     try {
         const { phoneNumber } = req.params;
-        const contacts = await Contact.findAll({ where: { phoneNumber } });
+        const contacts = await Contact.findAll(
+            { where: { phoneNumber },
+            include:[
+                {
+                    model: PersonRegister,
+                    attributes:[
+                        'name',
+                        'cpf'
+                    ]
+                }
+            ] });
         if (contacts.length > 0) {
             res.status(200).json(contacts);
         } else {
@@ -41,7 +69,18 @@ async function readContactByPhoneNumber(req, res) {
 async function readContactByEmail(req, res) {
     try {
         const { email } = req.params;
-        const contacts = await Contact.findAll({ where: { email } });
+        const contacts = await Contact.findAll(
+            { where: { email } ,
+            include:[
+                {
+                    model: PersonRegister,
+                    attributes:[
+                        'name',
+                        'cpf'
+                    ]
+                }
+            ]
+        });
         if (contacts.length > 0) {
             res.status(200).json(contacts);
         } else {
