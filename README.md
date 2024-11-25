@@ -14,6 +14,8 @@ Este projeto é uma API RESTful desenvolvida em Node.js e Express para gerenciar
 - **Express** - Framework para construção da API
 - **Sequelize** - ORM para manipulação de banco de dados
 - **dotenv** - Gerenciamento de variáveis de ambiente
+- **PostgreSQL** - Banco de dados relacional
+- **PGAdmin** - Interface gráfica para gerenciamento do PostgreSQL
 
 ---
 
@@ -161,20 +163,3 @@ npm run dev
 
 # O servidor estará disponível em:
 http://localhost:3000
-
-
-## Contribuições
-
-# Faça um fork do repositório
-git fork https://github.com/softexrecifepe/PI-T1-GP1-CLINICA.git
-
-# Crie uma branch para sua feature
-git checkout -b minha-feature
-
-# Commit suas mudanças
-git commit -m "Minha feature"
-
-# Suba a branch
-git push origin minha-feature
-
-# Abra um Pull Request no repositório original
