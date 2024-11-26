@@ -5,7 +5,6 @@ Este projeto é uma API RESTful desenvolvida em Node.js e Express para gerenciar
 ## Índice
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Instalação, Estrutura, Rotas e Execução](#instalação-estrutura-rotas-e-execução)
-- [Contribuições](#contribuições)
 
 ---
 
