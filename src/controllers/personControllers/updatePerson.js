@@ -24,7 +24,11 @@ async function updatePersonById(req, res) {
         if (role) {
             await person.createRole(role);
         };
-        res.status(200).json(person);
+
+        res.status(200).json({ 
+            message: "Person successfully updated", 
+            updatedPerson: person 
+        });
     } catch (err) {
         res.status(500).json({ Error: "Error updating person", details: err.message });
     };
