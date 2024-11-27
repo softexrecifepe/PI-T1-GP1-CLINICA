@@ -18,7 +18,10 @@ async function updateAddressById(req, res) {
             postalCode: postalCode || address.postalcode
         });
 
-        res.status(200).json(address);
+        res.status(200).json({
+            message: "Address updated successfully",
+            address
+        });
     } catch (err) {
         res.status(500).json({ Error: "Error updating address", details: err.message });
     };

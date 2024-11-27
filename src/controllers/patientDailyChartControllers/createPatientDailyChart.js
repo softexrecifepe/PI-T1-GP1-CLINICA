@@ -8,10 +8,13 @@ async function createPatientsDailyChart(req, res){
     }
     try{ 
         const newDailyChart = await PatientsDailyChart.create( {avaliationTime, symptoms, alimentation, feedingProbe, temperature, glicose, bpm, fr, normalUrine, isBetter, generalStatus, notes, vetNotes, treatmentId, roleId} );
-        res.status(201).json(newDailyChart);
+        res.status(201).json({
+            message: "Daily-chart created successfully",
+            dailyChart: newDailyChart
+        });
     } catch(error){
         res.status(500).json({
-            error: "Erro ao criar um novo registro",
+            error: "Error to create new register",
             details: error.errors ? error.errors.map(err => err.message) : error.message,
           });
           

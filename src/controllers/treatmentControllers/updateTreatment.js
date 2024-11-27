@@ -24,7 +24,10 @@ const updateTreatment = async (req, res) => {
       return res.status(404).json({ message: 'Treatment not found' });
     }
     await treatment.update(updateData);
-    res.status(200).json(treatment);
+    res.status(200).json({
+      message: "Treatment updated sucessfully",
+      treatment
+    });
   } catch (error) {
     console.error('Error updating treatment:', error);
     res.status(500).json({ message: 'An error occurred while updating the treatment', error: error.message });

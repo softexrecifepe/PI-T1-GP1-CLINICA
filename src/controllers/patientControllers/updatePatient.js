@@ -14,7 +14,10 @@ async function updatePatient (req, res) {
         if (petId) await patient.setPet(petId);
         if (cageId) await patient.setCage(cageId);
 
-        res.status(200).json(patient);
+        res.status(200).json({
+            message: "Patient Updated sucessfully",
+            patient
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({error: 'Erro ao atualizar o paciente.'});

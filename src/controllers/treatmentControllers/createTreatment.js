@@ -27,7 +27,10 @@ async function createTreatment(req, res) {
             dischargeNotes,
         });
 
-        res.status(201).json(newTreatment);
+        res.status(201).json({
+            message: "Treatment created successfully",
+            treatmente: newTreatment
+        });
     } catch (err) {
         res.status(500).json({ Error: "Error creating treatment", details: err.message });
     }

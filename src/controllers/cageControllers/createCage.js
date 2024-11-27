@@ -6,9 +6,11 @@ async function createCage(req, res) {
         const { cageNumber } = req.body;
         const newCage = await Cage.create({ cageNumber });
     
-        res.status(201).json(newCage);
+        res.status(201).json({
+          message: "Cage created sucessfully",
+          cage: newCage});
       } catch (error) {
-        res.status(500).json({ error: "Erro ao criar nova gaiola" });
+        res.status(500).json({ error: "Error to create cage" });
       }
 };
 

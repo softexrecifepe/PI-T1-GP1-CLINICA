@@ -9,7 +9,10 @@ async function createRole(req, res) {
             roleType,
             crmv
         });
-        res.status(201).json(newRole);
+        res.status(201).json({
+            message: "Role created successfully",
+            role: newRole
+        });
     } catch (err) {
         res.status(500).json({ Error: "Error creating role", err });
     };

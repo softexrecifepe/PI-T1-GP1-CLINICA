@@ -21,7 +21,10 @@ async function updatePet (req, res){
           neurologicalDisorders,
           notes,
         });
-        res.json(pet);
+        res.json({
+          message: "Pet updated successfully",
+          pet
+        });
       } else {
         res.status(404).json({ error: 'Pet não encontrado.' });
       }

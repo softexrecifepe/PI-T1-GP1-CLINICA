@@ -14,7 +14,10 @@ async function createPatient (req, res) {
         if (petId) await newPatient.setPet(petId);
         if (cageId) await newPatient.setCage(cageId);
 
-        res.status(201).json(newPatient);
+        res.status(201).json({
+            message: "Patient created successfully",
+            petient: newPatient
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({error: 'Erro ao criar o paciente.'});

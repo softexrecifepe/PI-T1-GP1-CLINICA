@@ -17,7 +17,10 @@ async function updateRoleById(req, res) {
             crmv: crmv || role.crmv
         });
 
-        res.status(200).json(role);
+        res.status(200).json({
+            message: "Role updated successfully",
+            role
+        });
     } catch (err) {
         res.status(500).json({ Error: "Error updating role", details: err.message });
     };

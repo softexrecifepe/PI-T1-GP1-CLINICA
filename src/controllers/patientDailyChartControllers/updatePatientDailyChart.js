@@ -7,7 +7,10 @@ async function updateDailyChart(req, res){
         const patientDailyChart = await PatientsDailyChart.findOne({where: {id: req.params.id}});
         if(patientDailyChart){
             await patientDailyChart.update(req.body);
-            res.json(patientDailyChart);
+            res.json({
+                message:"Daily-chart updated successfully",
+                patientDailyChart
+            });
         } else {
             res.status(404).json({ error: "Registro não encontrado."})
         }

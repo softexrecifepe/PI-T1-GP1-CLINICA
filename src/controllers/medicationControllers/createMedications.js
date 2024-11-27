@@ -20,8 +20,11 @@ async function createMedication(req, res) {
 
         console.log("Created medication:", medication);
 
-        res.status(201).json(medication.get({plain: true}));
-    } catch (error) {
+        res.status(201).json({
+            message: "Medication created successfully",
+            medication: medication.get({ plain: true })
+        });
+        } catch (error) {
         console.error("Error creating medication:", error);
         console.error("Full error:", error.stack);
         res.status(400).json({error: error.message});

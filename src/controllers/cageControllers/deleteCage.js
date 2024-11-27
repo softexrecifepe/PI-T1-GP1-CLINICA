@@ -8,14 +8,14 @@ async function deleteCageById(req, res) {
         const cage = await Cage.findByPk(id);
 
         if (!cage) {
-            return res.status(404).json({ error: "Gaiola não encontrada" });
+            return res.status(404).json({ error: "Cage not found" });
         }
 
         await cage.destroy();
 
-        res.status(200).json({ message: "Gaiola deletada com sucesso" });
+        res.status(200).json({ message: "Cage deleted sucessfully" });
     } catch (error) {
-        res.status(500).json({ error: "Falha ao deletar a gaiola" });
+        res.status(500).json({ error: "Fail to delete cage" });
     }
 
 };

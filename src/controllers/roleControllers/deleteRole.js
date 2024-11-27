@@ -6,7 +6,7 @@ async function deleteRoleById(req, res) {
         const { id } = req.params;
         const deletedRole = await Role.destroy({ where: { id } });
         if (deletedRole) {
-            res.status(204).send();
+            res.status(200).json({ message: "Role deleted successfully"});
         } else {
             res.status(404).json({ Error: "Role not found" });
         }

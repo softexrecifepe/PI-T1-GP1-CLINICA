@@ -11,7 +11,10 @@ async function createAddress(req, res) {
             postalCode,
             personRegisterId
         });
-        res.status(201).json(newAddress);
+        res.status(201).json({
+            message: "Address created successfully",
+            address: newAddress
+        });
     } catch (err) {
         res.status(500).json({ Error: "Error creating address", err });
     };

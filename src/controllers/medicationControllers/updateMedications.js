@@ -19,7 +19,10 @@ async function updateMedication(req, res) {
         medication.treatmentId = treatmentId || medication.treatmentId;
 
         await medication.save();
-        res.status(200).json(medication);
+        res.status(200).json({
+            message:"Medication updated successfully",
+            medication
+        });
     } catch (error) {
         console.error("Error updating medication:", error);
         res.status(400).json({ error: error.message });
