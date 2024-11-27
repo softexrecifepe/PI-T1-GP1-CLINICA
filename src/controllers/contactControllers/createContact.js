@@ -9,7 +9,10 @@ async function createContact(req, res) {
             phoneNumber, 
             email 
         });
-        res.status(201).json(newContact);
+        res.status(201).json({
+            message: "Contact created Successfully",
+            contact: newContact
+        });
     } catch (err) {
         res.status(500).json({ Error: "Error creating contact", details: err.message });
     };

@@ -16,7 +16,10 @@ async function updateContactById(req, res) {
             email: email || contact.email,
         });
 
-        res.status(200).json(contact);
+        res.status(200).json({
+            message: "Contact updated sucessfully",
+            contact
+        });
     } catch (err) {
         res.status(500).json({ Error: "Error updating contact", details: err.message });
     };

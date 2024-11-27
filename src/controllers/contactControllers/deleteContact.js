@@ -6,7 +6,7 @@ async function deleteContactById(req, res) {
         const { id } = req.params;
         const deletedContact = await Contact.destroy({ where: { id } });
         if (deletedContact) {
-            res.status(204).send();
+            res.status(200).json({message: "Contact deleted successfully"});
         } else {
             res.status(404).json({ Error: "Contact not found" });
         }
