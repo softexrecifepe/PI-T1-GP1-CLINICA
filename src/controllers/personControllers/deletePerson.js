@@ -9,7 +9,7 @@ async function deletePersonById(req, res) {
             await PersonRegister.destroy({
                 where: { id }
             });
-            res.status(204).json({ message: "Person deleted successfully"});
+            res.status(200).json({ message: "Person deleted successfully"});
         } else {
             res.status(404).json({ Error: "Person not found" });
         }
