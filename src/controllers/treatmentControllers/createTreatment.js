@@ -38,4 +38,4 @@ async function createTreatment(req, res) {
 
 module.exports = {
     createTreatment
-};
+}
