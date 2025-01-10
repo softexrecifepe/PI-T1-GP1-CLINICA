@@ -9,7 +9,7 @@ async function readAllPersons(req, res) {
         const person = await PersonRegister.findAll();
         res.status(200).json(person);
     } catch (err) {
-        res.status(500).json({ Error: "Error retriving persons", details: err.message});
+        res.status(500).json({ Error: "Error retrieving persons", details: err.message});
     };
 };
 
